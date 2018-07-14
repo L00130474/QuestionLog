@@ -12,15 +12,15 @@
                 <a class="navbar-brand" href="Default.html">Optum Question Log</a>
             </div>
             <ul class="nav navbar-nav">
-                <li class="active"><a href="Default.html">Home</a></li>               
+                <li class="active"><a href="Default.html">Home</a></li>
                 <li><a href="admin.html">SME Log In</a></li>
                 <li><a href="about.html">About</a></li>
-                
+
             </ul>
             <div id="ttStep5" dx-tooltip="withTemplateOptions4"></div>
         </div>
-    </nav> 
-    
+    </nav>
+
 
     <div id="main" class="container theme-showcase" role="main">
         <?php include("includes/header.html");?>

@@ -7,20 +7,21 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "QuestionLog", ".", "{F1D25F
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.2"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_53536"
-		Debug.AspNetCompiler.PhysicalPath = "F:\xampp\htdocs\Project3\"
+		Debug.AspNetCompiler.PhysicalPath = "..\QuestionLog\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_53536\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
 		Release.AspNetCompiler.VirtualPath = "/localhost_53536"
-		Release.AspNetCompiler.PhysicalPath = "F:\xampp\htdocs\Project3\"
+		Release.AspNetCompiler.PhysicalPath = "..\QuestionLog\"
 		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_53536\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "53536"
+		SlnRelativePath = "..\QuestionLog\"
 	EndProjectSection
 EndProject
 Global
