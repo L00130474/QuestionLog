@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>SME Section</title>
     <script src="Scripts/jquery-3.1.0.min.js"></script>
     <meta charset="utf-8" />
 </head>
@@ -12,29 +12,21 @@
                 <a class="navbar-brand" href="Default.html">Optum Question Log</a>
             </div>
             <ul class="nav navbar-nav">
-                <li class="active"><a href="Default.html">Home</a></li>
+                <li class="active"><a href="Default.html">Home</a></li>               
                 <li><a href="admin.html">SME Log In</a></li>
-                <li><a href="about.html">About</a></li>
-
+                <li><a href="about.html">About</a></li>                
             </ul>
-            <div id="ttStep5" dx-tooltip="withTemplateOptions4"></div>
         </div>
-    </nav>
-
+    </nav> 
+    
 
     <div id="main" class="container theme-showcase" role="main">
-        <?php include("includes/header.html");?>
         <div class="panel panel-primary">
             <!-- Default panel contents -->
             <div class="panel-heading">Panel heading</div>
             <div class="panel-body">
                 <p>Main</p>
-            </div>
-
-            <!-- Table -->
-            <table class="table">
-                This is a table
-            </table>
+            </div>           
         </div>
     </div>
 

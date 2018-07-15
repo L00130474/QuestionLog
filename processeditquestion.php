@@ -31,22 +31,34 @@
                 $link=mysqli_connect($server,$dbuser,$password);
                 mysqli_select_db($link, "question_log");
 
+                $q_id=$_POST["q_id"];
                 $examiner_name=$_POST["examiner_name"];
                 $email=$_POST["email"];
                 $claim_no=$_POST["claim_no"];
                 $clm_recvd_date=$_POST["clm_recvd_date"];
                 $question=$_POST["question"];
+                $category=$_POST["category"];
+                $response=$_POST["response"];
+                $resp_date=$_POST["resp_date"];
+                $sme=$_POST["sme"];
+                $status=$_POST["status"];
 
-                $sql_insert="INSERT INTO question(examiner_name, email, claim_no, clm_recvd_date, question, q_date) VALUES ('$examiner_name', '$email', '$claim_no',  '$clm_recvd_date', '$question', NOW())";
+                $sql_update="UPDATE question set examiner_name = '$examiner_name', email = '$email', claim_no = '$claim_no', clm_recvd_date = '$clm_recvd_date', question = '$question', category = '$category', response = '$response', resp_date = '$resp_date', sme = '$sme', status = '$status' WHERE q_id=$q_id";
 
-                if(mysqli_query($link, $sql_insert)) {
-                echo "<h3>Question succesfully submitted for review.</h3>";
-                echo "<a href='addquestion.php'> Return to add a question page</a>";}
-                else {
-                echo "An error occurred, try again!";
-                }
-                mysqli_close($link);
-                ?>
+                 $retval = mysqli_query($link, $sql_update);
+
+            if(! $retval)
+            {
+            die('Could not update data:'.mysql_error());
+            }
+            else
+            {
+                header("Location: http://localhost/Project3/QuestionLog/managequestions.php");
+            exit;
+            }
+            echo "Question Updated";
+            mysqli_close($link);
+            ?>
             </div>
         </div>
     </div>

@@ -14,16 +14,12 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="Default.html">Home</a></li>               
                 <li><a href="admin.html">SME Log In</a></li>
-                <li><a href="about.html">About</a></li>
-                
+                <li><a href="about.html">About</a></li>                
             </ul>
-            <div id="ttStep5" dx-tooltip="withTemplateOptions4"></div>
         </div>
-    </nav> 
-    
+    </nav>     
 
-    <div id="main" class="container theme-showcase" role="main">
-        <?php include("includes/header.html");?>
+    <div id="main" class="container theme-showcase" role="main">        
         <div class="panel panel-primary">
             <!-- Default panel contents -->
             <div class="panel-heading">Panel heading</div>

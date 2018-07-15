@@ -15,9 +15,7 @@
                 <li class="active"><a href="Default.html">Home</a></li>
                 <li><a href="admin.html">SME Log In</a></li>
                 <li><a href="about.html">About</a></li>
-
             </ul>
-            <div id="ttStep5" dx-tooltip="withTemplateOptions4"></div>
         </div>
     </nav>
 
@@ -39,7 +37,7 @@
                                         Examiner Name:
                                     </div>
                                     <div class="col-md-3">
-                                        <input id="examinerName" type="text" class="form-control" required="required" placeholder="Enter Examiner Name" />
+                                        <input name="examiner_name" type="text" class="form-control" required="required" placeholder="Enter Examiner Name" />
                                     </div>
 
                                     <!-- Padding -->
@@ -51,7 +49,7 @@
                                         Email Address:
                                     </div>
                                     <div class="col-md-3">
-                                        <input id="email" type="email" class="form-control" required="required" placeholder="Format: jbloggs@domain.ie" />
+                                        <input name="email" type="email" class="form-control" required="required" placeholder="Format: jbloggs@domain.ie" />
                                     </div>
                                 </div>
 
@@ -66,7 +64,7 @@
                                         Claim Number:
                                     </div>
                                     <div class="col-md-3">
-                                        <input id="claimNum" type="number" class="form-control" required="required" placeholder="Format: 12345678910" />
+                                        <input name="claim_no" type="number" class="form-control" required="required" placeholder="Format: 12345678910" />
                                     </div>
 
                                     <!-- Padding -->
@@ -81,7 +79,7 @@
 
                                         <div class="input-daterange input-group" id="datepicker">
                                             <span class="input-group-addon">From</span>
-                                            <input id="recdDate" type="text" class="input-sm form-control" name="received" />
+                                            <input id="recdDate" type="text" class="input-sm form-control" name="clm_recvd_date" />
                                         </div>
                                     </div>
                                 </div>
@@ -91,22 +89,7 @@
                                     <br />
                                 </div>
 
-                                <div class="row">
-                                    <!-- Category -->
-                                    <div class="col-md-2">
-                                        Category:
-                                    </div>
-                                    <div class="col-md-3">
-                                        <select id="category" class="chosen-select" style="width: 100px;">
-                                            <option>Contract</option>
-                                            <option>Provider</option>
-                                            <option>Timely Filing</option>
-                                        </select>
-                                    </div>
-
-                                    <!-- Padding -->
-                                    <div class="col-md-1">
-                                    </div>
+                                <div class="row">                                  
 
                                     <!-- Question -->
                                     <div class="col-md-2">
