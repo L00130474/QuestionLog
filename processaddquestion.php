@@ -29,15 +29,15 @@
                 $dbuser="root";
                 $password="";
                 $link=mysqli_connect($server,$dbuser,$password);
-                mysqli_select_db($link, "question_log");
+                mysqli_select_db($link, "question_log");              
 
                 $examiner_name=$_POST["examiner_name"];
                 $email=$_POST["email"];
                 $claim_no=$_POST["claim_no"];
-                $clm_recvd_date=$_POST["clm_recvd_date"];
+                $clm_recvd_date=$_POST["clm_recvd_date"];  
                 $question=$_POST["question"];
 
-                $sql_insert="INSERT INTO question(examiner_name, email, claim_no, clm_recvd_date, question, q_date) VALUES ('$examiner_name', '$email', '$claim_no',  '$clm_recvd_date', '$question', NOW())";
+                $sql_insert="CALL spAddQuestion('$examiner_name', '$email', '$claim_no',  '$clm_recvd_date', '$question', NOW())";
 
                 if(mysqli_query($link, $sql_insert)) {
                 echo "<h3>Question succesfully submitted for review.</h3>";
@@ -57,6 +57,9 @@
 <link href="Styles/bootstrap/bootstrap.css" rel="stylesheet" />
 <link href="Styles/bootstrap/bootstrap-theme.min.css" rel="stylesheet" />
 <link href="Styles/DatePicker/css/bootstrap-datepicker.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
 
 
 <!--https://getbootstrap.com/docs/3.3/components/-->

@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>Respond</title>
     <script src="Scripts/jquery-3.1.0.min.js"></script>
     <meta charset="utf-8" />
 </head>
@@ -9,7 +9,7 @@
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="Default.html">Optum Question Log</a>
+                <a class="navbar-brand" href="addquestion.php">Optum Question Log</a>
             </div>
             <ul class="nav navbar-nav">
                 <li class="active"><a href="Default.html">Home</a></li>
@@ -42,7 +42,7 @@
                 $claim_no=$row["claim_no"];
                 $clm_recvd_date=$row["clm_recvd_date"];
                 $category=$row["category"];
-                $question=$row["question"];
+                $question=$row["question_txt"];
                 $q_date=$row["q_date"];
                 $response=$row["response"];
                 $resp_date=$row["resp_date"];
@@ -120,6 +120,17 @@
 
                             <div class="row">
                                 <div class="col-md-2">
+                                    Question Date:
+                                </div>
+                                <div class="col-md-3">
+                                    <input name="q_date" type="text" value="<?php echo $q_date ;?>" />
+                                </div>
+
+                                <!-- Padding -->
+                                <div class="col-md-1">
+                                </div>
+
+                                <div class="col-md-2">
                                     Category:
                                 </div>
                                 <div class="col-md-3">
@@ -129,22 +140,12 @@
                                         WHILE($row3=mysqli_fetch_array($result3))
                                         {
                                         ?>
+                                        <option><?php echo $category ;?></option>
                                         <option><?php echo $row3["cat_name"]; ?></option>
                                         <?php
                                         }
                                         ?>
                                     </select>
-                                </div>
-
-                                <!-- Padding -->
-                                <div class="col-md-1">
-                                </div>
-
-                                <div class="col-md-2">
-                                    Question
-                                </div>
-                                <div class="col-md-3">
-                                    <textarea name="question" rows="8" cols="35"> <?php echo $question ;?></textarea>
                                 </div>
                             </div>
 
@@ -155,10 +156,10 @@
 
                             <div class="row">
                                 <div class="col-md-2">
-                                    Question Date:
+                                    Question
                                 </div>
                                 <div class="col-md-3">
-                                    <input name="q_date" type="text" value="<?php echo $q_date ;?>" />
+                                    <textarea name="question" rows="8" cols="35"> <?php echo $question ;?></textarea>
                                 </div>
 
                                 <!-- Padding -->
@@ -245,6 +246,28 @@
 <link href="Styles/bootstrap/bootstrap.css" rel="stylesheet" />
 <link href="Styles/bootstrap/bootstrap-theme.min.css" rel="stylesheet" />
 <link href="Styles/DatePicker/css/bootstrap-datepicker.min.css" rel="stylesheet" />
+
+<!--Date Time Picker-->
+<script src="Styles/DatePicker/js/bootstrap-datepicker.js"></script>
+<script>
+    $('.input-daterange').datepicker({
+        format: 'yyyy-mm-dd',
+        todayBtn: "linked",
+        clearBtn: true
+    });
+</script>
+<script type="text/javascript">
+    var config = {
+        '.chosen-select': {},
+        '.chosen-select-deselect': { allow_single_deselect: true },
+        '.chosen-select-no-single': { disable_search_threshold: 15 },
+        '.chosen-select-no-results': { no_results_text: 'No Matches' },
+        '.chosen-select-width': { width: "95%" }
+    }
+    for (var selector in config) {
+        $(selector).chosen(config[selector]);
+    }
+</script>
 
 
 <!--https://getbootstrap.com/docs/3.3/components/-->

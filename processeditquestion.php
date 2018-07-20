@@ -43,7 +43,7 @@
                 $sme=$_POST["sme"];
                 $status=$_POST["status"];
 
-                $sql_update="UPDATE question set examiner_name = '$examiner_name', email = '$email', claim_no = '$claim_no', clm_recvd_date = '$clm_recvd_date', question = '$question', category = '$category', response = '$response', resp_date = '$resp_date', sme = '$sme', status = '$status' WHERE q_id=$q_id";
+                $sql_update="CALL spEditQuestion('$examiner_name', '$email', '$claim_no',  '$clm_recvd_date', '$question', '$category', '$response','$resp_date','$sme','$status','$q_id')";
 
                  $retval = mysqli_query($link, $sql_update);
 
@@ -69,6 +69,26 @@
 <link href="Styles/bootstrap/bootstrap.css" rel="stylesheet" />
 <link href="Styles/bootstrap/bootstrap-theme.min.css" rel="stylesheet" />
 <link href="Styles/DatePicker/css/bootstrap-datepicker.min.css" rel="stylesheet" />
+<!--Date Time Picker-->
+<script src="Styles/DatePicker/js/bootstrap-datepicker.js"></script>
+<script>
+    $('.input-daterange').datepicker({
+        todayBtn: "linked",
+        clearBtn: true
+    });
+</script>
+<script type="text/javascript">
+    var config = {
+        '.chosen-select': {},
+        '.chosen-select-deselect': { allow_single_deselect: true },
+        '.chosen-select-no-single': { disable_search_threshold: 15 },
+        '.chosen-select-no-results': { no_results_text: 'No Matches' },
+        '.chosen-select-width': { width: "95%" }
+    }
+    for (var selector in config) {
+        $(selector).chosen(config[selector]);
+    }
+</script>
 
 
 <!--https://getbootstrap.com/docs/3.3/components/-->

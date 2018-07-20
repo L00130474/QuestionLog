@@ -49,13 +49,13 @@
                     $examiner_name=$row["examiner_name"];
                     $claim_no=$row["claim_no"];
                     $clm_recvd_date=$row["clm_recvd_date"];
-                    $question=$row["question"];
+                    $question_txt=$row["question_txt"];
                     echo"
                     <tr>                        
                         <td>$examiner_name</td>                        
                         <td>$claim_no</td>
                         <td>$clm_recvd_date</td>
-                        <td>$question</td>
+                        <td>$question_txt</td>
                     </tr>";
                     
                     echo"
@@ -76,6 +76,7 @@
 <link href="Styles/bootstrap/bootstrap.css" rel="stylesheet" />
 <link href="Styles/bootstrap/bootstrap-theme.min.css" rel="stylesheet" />
 <link href="Styles/DatePicker/css/bootstrap-datepicker.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 
 <!--https://getbootstrap.com/docs/3.3/components/-->
