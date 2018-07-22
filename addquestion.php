@@ -20,97 +20,95 @@
     </nav>
 
     <div id="main" class="container theme-showcase" role="main">
-
-        <div id="form">
-            <div class="panel panel-primary">
-                <!-- Default panel contents -->
-                <div id="form">
-                    <form method="post" action="processaddquestion.php">
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">Please fill in details below (All details are required)</h3>
-                            </div>
-                            <div class="panel-body">
-                                <div class="row">
-                                    <!-- Name -->
-                                    <div class="col-md-2">
-                                        Examiner Name:
-                                    </div>
-                                    <div class="col-md-3">
-                                        <input name="examiner_name" type="text" class="form-control" required="required" placeholder="Enter Examiner Name" />
-                                    </div>
-
-                                    <!-- Padding -->
-                                    <div class="col-md-1">
-                                    </div>
-
-                                    <!-- Email Address -->
-                                    <div class="col-md-2">
-                                        Email Address:
-                                    </div>
-                                    <div class="col-md-3">
-                                        <input name="email" type="email" class="form-control" required="required" placeholder="Format: jbloggs@domain.ie" />
-                                    </div>
+        <div class="panel panel-primary">
+            <!-- Default panel contents -->
+            <div id="form">
+                <form method="post" action="processaddquestion.php">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Please fill in details below (All details are required)</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <!-- Name -->
+                                <div class="col-md-2">
+                                    Examiner Name:
+                                </div>
+                                <div class="col-md-3">
+                                    <input name="examiner_name" type="text" class="form-control" required="required" placeholder="Enter Examiner Name" />
                                 </div>
 
                                 <!-- Padding -->
-                                <div class="row">
-                                    <br />
+                                <div class="col-md-1">
                                 </div>
 
-                                <div class="row">
-                                    <!-- Claim Number -->
-                                    <div class="col-md-2">
-                                        Claim Number:
-                                    </div>
-                                    <div class="col-md-3">
-                                        <input name="claim_no" type="number" class="form-control" required="required" placeholder="Format: 12345678910" />
-                                    </div>
+                                <!-- Email Address -->
+                                <div class="col-md-2">
+                                    Email Address:
+                                </div>
+                                <div class="col-md-3">
+                                    <input name="email" type="email" class="form-control" required="required" placeholder="Format: jbloggs@domain.ie" />
+                                </div>
+                            </div>
 
-                                    <!-- Padding -->
-                                    <div class="col-md-1">
-                                    </div>
+                            <!-- Padding -->
+                            <div class="row">
+                                <br />
+                            </div>
 
-                                    <!-- Received Date -->
-                                    <div class="col-md-2">
-                                        Claim Received Date:
-                                    </div>
-                                    <div class="col-md-3">
-
-                                        <div class="input-daterange input-group" id="datepicker" data-provide="datepicker">
-                                            <span class="input-group-addon">From</span>
-                                            <input id="recdDate" type="text" class="input-sm form-control" name="clm_recvd_date" />
-                                        </div>
-                                    </div>
+                            <div class="row">
+                                <!-- Claim Number -->
+                                <div class="col-md-2">
+                                    Claim Number:
+                                </div>
+                                <div class="col-md-3">
+                                    <input name="claim_no" type="number" class="form-control" required="required" placeholder="Format: 12345678910" />
                                 </div>
 
                                 <!-- Padding -->
-                                <div class="row">
-                                    <br />
+                                <div class="col-md-1">
                                 </div>
 
-                                <div class="row">                                  
+                                <!-- Received Date -->
+                                <div class="col-md-2">
+                                    Claim Received Date:
+                                </div>
+                                <div class="col-md-3">
 
-                                    <!-- Question -->
-                                    <div class="col-md-2">
-                                        Question:
-                                    </div>
-                                    <div class="col-md-3">
-                                        <textarea name="question" rows="8" cols="35" required="required" placeholder="Enter Your Question Here"></textarea>
+                                    <div class="input-daterange input-group" id="datepicker" data-provide="datepicker">
+                                        <span class="input-group-addon">From</span>
+                                        <input id="recdDate" type="text" class="input-sm form-control" name="clm_recvd_date" />
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- Submit -->
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div id="submitQ" dx-button="btnSubmit">
-                                    <input type="submit" name="submit" value="Submit Question" />
+
+                            <!-- Padding -->
+                            <div class="row">
+                                <br />
+                            </div>
+
+                            <div class="row">
+
+                                <!-- Question -->
+                                <div class="col-md-2">
+                                    Question:
+                                </div>
+                                <div class="col-md-3">
+                                    <textarea name="question" rows="8" cols="35" required="required" placeholder="Enter Your Question Here"></textarea>
                                 </div>
                             </div>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                    <!-- Submit -->
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div id="submitQ" dx-button="btnSubmit">
+                                <input type="submit" name="submit" value="Submit Question" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
             </div>
         </div>
     </div>

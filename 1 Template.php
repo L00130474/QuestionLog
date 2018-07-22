@@ -17,11 +17,10 @@
                 <li><a href="about.html">About</a></li>                
             </ul>
         </div>
-    </nav>     
-
-    <div id="main" class="container theme-showcase" role="main">        
-        <div class="panel panel-primary">
-            <!-- Default panel contents -->
+    </nav>  
+    
+             
+        <div class="panel panel-primary">           
             <div class="panel-heading">Panel heading</div>
             <div class="panel-body">
                 <p>Main</p>
@@ -46,6 +45,7 @@
 <script src="Styles/DatePicker/js/bootstrap-datepicker.js"></script>
 <script>
     $('.input-daterange').datepicker({
+        format: 'yyyy-mm-dd',
         todayBtn: "linked",
         clearBtn: true
     });

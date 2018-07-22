@@ -180,12 +180,21 @@ optgroup {
   font-weight: bold;
 }
 table {
-  border-spacing: 0;
+  border-spacing: 5px;
   border-collapse: collapse;
+  width:100%;  
 }
+table td{
+   padding:10px;
+   border: 1px solid;
+}
+table tr:nth-child(1) {
+ background-color:aliceblue;
+}
+
 td,
 th {
-  padding: 0;
+  padding: 10px;
 }
 /*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
 @media print {
