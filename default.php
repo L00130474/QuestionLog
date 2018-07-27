@@ -121,7 +121,7 @@
                     $q_date=$row["q_date"];
                     $response=$row["response"];
                     $resp_date=$row["resp_date"];
-                    $sme=$row["sme"];
+                    $sme_name=$row["sme_name"];
                     $status=$row["status"];
                     echo"
                     <tr>
@@ -132,7 +132,7 @@
                         <td>$q_date</td>
                         <td>$response</td>
                         <td>$resp_date</td>
-                        <td>$sme</td>
+                        <td>$sme_name</td>
                         <td>$status</td>
 
                     </tr>";

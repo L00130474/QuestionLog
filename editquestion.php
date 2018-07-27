@@ -41,15 +41,15 @@
                 $email=$row["email"];
                 $claim_no=$row["claim_no"];
                 $clm_recvd_date=$row["clm_recvd_date"];
-                $category=$row["category"];
+                $cat_id=$row["cat_id"];
                 $question=$row["question_txt"];
                 $q_date=$row["q_date"];
                 $response=$row["response"];
                 $resp_date=$row["resp_date"];
-                $sme=$row["sme"];
+                $sme_id=$row["sme_id"];
                 $status=$row["status"];
 
-                $sqlSme = "SELECT * FROM sme ORDER BY sme_name";
+                $sqlSme = "SELECT * FROM sme";
                 $result2=mysqli_query($link,$sqlSme);
                 $row2=mysqli_fetch_array($result2);
 
@@ -139,9 +139,8 @@
                                         <?php
                                         WHILE($row3=mysqli_fetch_array($result3))
                                         {
-                                        ?>
-                                        <option><?php echo $category ;?></option>
-                                        <option><?php echo $row3["cat_name"]; ?></option>
+                                        ?>                                        
+                                        <option><?php echo $row3["cat_id"]; ?></option>
                                         <?php
                                         }
                                         ?>
@@ -201,7 +200,7 @@
                                         WHILE($row2=mysqli_fetch_array($result2))
                                         {
                                         ?>
-                                        <option><?php echo $row2["sme_name"]; ?></option>
+                                        <option><?php echo $row2["sme_id"];?></option>
                                         <?php
                                         }
                                         ?>

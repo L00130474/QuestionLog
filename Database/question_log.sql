@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 16, 2018 at 08:11 PM
+-- Generation Time: Jul 27, 2018 at 05:10 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -24,9 +24,33 @@ DELIMITER $$
 --
 -- Procedures
 --
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SearchQuestions` ()  BEGIN
-        SELECT * FROM question;
-        END$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spAddQuestion` (IN `exam_name` VARCHAR(40), IN `emailAdd` VARCHAR(40), IN `claimNum` INT, IN `recvddate` DATE, IN `questionIn` TEXT, IN `qDate` DATE)  BEGIN
+INSERT INTO question (examiner_name, email, claim_no, clm_recvd_date, question_txt, q_date) VALUES (exam_name, emailAdd, claimNum, recvddate, questionIn, qDate);
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spDeleteQuestion` (IN `qId` INT(11))  NO SQL
+BEGIN
+DELETE FROM question WHERE q_id = qId;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spDisplayApprovedQs` ()  BEGIN
+      SELECT * FROM question WHERE STATUS != 'pending';
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spEditQuestion` (IN `exam_name` VARCHAR(40), IN `emailAdd` VARCHAR(40), IN `claimNum` INT(11), IN `recvdDate` DATE, IN `questionIn` TEXT, IN `catIn` VARCHAR(30), IN `responseIn` TEXT, IN `responseDate` DATE, IN `smeIn` VARCHAR(30), IN `statusIn` VARCHAR(30), IN `questID` INT(11))  NO SQL
+BEGIN
+UPDATE question set examiner_name = exam_name, email = emailAdd, claim_no = claimNum, clm_recvd_date = recvdDate, question_txt = questionIn, category = catIn, response = responseIn, resp_date = responseDate, sme = smeIn, status = statusIn WHERE q_id = questID;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spSearchQuestions` (IN `claimNum` INT(11))  NO SQL
+BEGIN
+	
+	SET @sql = CONCAT("SELECT * FROM 'question' WHERE claim_no LIKE '%", @clmNum, "%'");  
+    SELECT @sql;
+    prepare stmt from @sql; 
+  execute stmt; 
+  deallocate prepare stmt; 
+    END$$
 
 DELIMITER ;
 
@@ -86,7 +110,7 @@ CREATE TABLE `question` (
   `claim_no` int(20) NOT NULL,
   `clm_recvd_date` date NOT NULL,
   `category` varchar(30) NOT NULL,
-  `question` text NOT NULL,
+  `question_txt` text NOT NULL,
   `q_date` datetime NOT NULL,
   `response` text,
   `resp_date` date DEFAULT NULL,
@@ -98,9 +122,13 @@ CREATE TABLE `question` (
 -- Dumping data for table `question`
 --
 
-INSERT INTO `question` (`q_id`, `examiner_name`, `email`, `claim_no`, `clm_recvd_date`, `category`, `question`, `q_date`, `response`, `resp_date`, `sme`, `status`) VALUES
-(1, 'jc', 'johnfcollesq@gmail.com', 123, '0000-00-00', 'Duplicate', '  asdfasdf', '0000-00-00 00:00:00', '  the answer', '2018-07-09', 'Davini Doherty', 'Pending'),
-(3, 'jc', 'johnfcollesq@gmail.com', 456, '2018-04-05', 'Duplicate', '  question', '2018-07-14 16:45:00', ' 123456', '2018-07-07', 'Davini Doherty', 'Closed');
+INSERT INTO `question` (`q_id`, `examiner_name`, `email`, `claim_no`, `clm_recvd_date`, `category`, `question_txt`, `q_date`, `response`, `resp_date`, `sme`, `status`) VALUES
+(8, 'Ben Bridges', 'johnfcollesq@gmail.com', 1234567, '2018-07-16', 'Eligibility', '     My question needs to be a lot longer  My question needs to be a lot longer\r\n My question needs to be a lot longer  My question needs to be a lot longer\r\n My question needs to be a lot longer', '2018-07-16 19:52:00', '     response', '2018-05-05', 'Davini Doherty', 'Assigned'),
+(9, 'dfd', 'clairepdonn@yahoo.ie', 4646, '0000-00-00', 'Reciprocity', '   fasfasddf', '2018-07-16 20:37:08', '   lots of words  lots of words  lots of words  lots of words  lots of words  lots of words  lots of words  lots of words  lots of words  lots of words  lots of words  lots of words  lots of words  lots of words  lots of words  lots of words', '0000-00-00', 'Ciara Quinn', 'Pending'),
+(10, 'Ben Bridges', 'clairepdonn@yahoo.ie', 123456, '0000-00-00', '', 'safafassdf', '2018-07-16 21:00:27', NULL, NULL, NULL, 'pending'),
+(11, 'bob', 'jc@jc.jc', 789465, '0000-00-00', '', 'question here', '2018-07-18 00:00:00', NULL, NULL, NULL, 'pending'),
+(12, 'JCC', 'mccannfiona@eircom.net', 878987, '0000-00-00', '', ' ASFSFASDFS', '2018-07-20 00:00:00', ' ', '0000-00-00', 'Ciara Quinn', 'Assigned'),
+(13, 'jc', 'fsdf@dfdf.com', 424234, '0000-00-00', '', 'fasfasfasdf', '2018-07-20 00:00:00', NULL, NULL, NULL, 'pending');
 
 -- --------------------------------------------------------
 
@@ -204,7 +232,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `question`
 --
 ALTER TABLE `question`
-  MODIFY `q_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `q_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `sme`
 --
