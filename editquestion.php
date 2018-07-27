@@ -60,8 +60,6 @@
                 mysqli_close($link);
                 ?>
 
-
-
                 <div id="form">
                     <form method="post" action="processeditquestion.php">
 
@@ -135,7 +133,7 @@
                                 </div>
                                 <div class="col-md-3">
 
-                                    <select name="category" class="chosen-select" style="width: 160px;">
+                                    <select name="cat_id" class="chosen-select" style="width: 160px;">
                                         <?php
                                         WHILE($row3=mysqli_fetch_array($result3))
                                         {
@@ -195,7 +193,7 @@
                                 </div>
                                 <div class="col-md-3">
 
-                                    <select name="sme" class="chosen-select" style="width: 160px;">
+                                    <select name="sme_id" class="chosen-select" style="width: 160px;">
                                         <?php
                                         WHILE($row2=mysqli_fetch_array($result2))
                                         {

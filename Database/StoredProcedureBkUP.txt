@@ -1,0 +1,89 @@
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spDeleteQuestion`(IN `qId` INT(11))
+    NO SQL
+BEGIN
+DELETE FROM question WHERE q_id = qId;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spAddQuestion`(IN `exam_name` VARCHAR(40), IN `emailAdd` VARCHAR(40), IN `claimNum` INT, IN `recvddate` DATE, IN `questionIn` TEXT, IN `qDate` DATE)
+BEGIN
+INSERT INTO question (examiner_name, email, claim_no, clm_recvd_date, question_txt, q_date) VALUES (exam_name, emailAdd, claimNum, recvddate, questionIn, qDate);
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spDisplayApprovedQs`()
+BEGIN
+      SELECT q.*, concat(s.sme_fname, ' ', s.sme_lname) as sme_name FROM question as q
+      JOIN sme as s on q.sme_id = s.sme_id
+      WHERE STATUS != 'pending';
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spDisplayManagedQs`()
+    NO SQL
+BEGIN
+      SELECT q.*, c.cat_name, concat(s.sme_fname, ' ', s.sme_lname) as sme_name
+      FROM question AS q
+      LEFT JOIN sme AS s 
+      on q.sme_id = s.sme_id
+      LEFT JOIN category AS c
+      ON q.cat_id = c.cat_id;      
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spEditQuestion1`(IN `exam_name` VARCHAR(40), IN `emailAdd` VARCHAR(40), IN `claimNum` INT(11), IN `recvdDate` DATE, IN `questionIn` TEXT, IN `catIn` INT(11), IN `responseIn` TEXT, IN `responseDate` DATE, IN `smeIn` INT(11), IN `statusIn` VARCHAR(30), IN `questID` INT(11), IN `smeName` VARCHAR(80), IN `cat_name` VARCHAR(40))
+    NO SQL
+BEGIN
+
+UPDATE `question` SET examiner_name = exam_name, email = emailAdd, claim_no = claimNum, clm_recvd_date = recvdDate, question_txt = questionIn, cat_id = catIn, response = responseIn, resp_date = responseDate, sme_id = smeIn, status = statusIn WHERE q_id = questID;
+
+UPDATE `question` AS q JOIN sme AS s 
+SET q.sme_id=s.sme_id WHERE q_id = questID AND concat(s.sme_fname, ' ', s.sme_lname) = smeName;
+
+UPDATE `question` AS q JOIN category AS c
+SET q.cat_id = c.cat_id WHERE q_id = questID AND c.cat_name = cat_name;
+
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spEditQuestion`(IN `exam_name` VARCHAR(40), IN `emailAdd` VARCHAR(40), IN `claimNum` INT(11), IN `recvdDate` DATE, IN `questionIn` TEXT, IN `catIn` INT(11), IN `responseIn` TEXT, IN `responseDate` DATE, IN `smeIn` INT(11), IN `statusIn` VARCHAR(30), IN `questID` INT(11))
+    NO SQL
+BEGIN
+UPDATE question set examiner_name = exam_name, email = emailAdd, claim_no = claimNum, clm_recvd_date = recvdDate, question_txt = questionIn, cat_id = catIn, response = responseIn, resp_date = responseDate, sme_id = smeIn, status = statusIn WHERE q_id = questID;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spSearchQuestions`(IN `claimNum` INT(11))
+    NO SQL
+BEGIN
+	
+	SET @sql = CONCAT("SELECT * FROM 'question' WHERE claim_no LIKE '%", @clmNum, "%'");  
+    SELECT @sql;
+    prepare stmt from @sql; 
+  execute stmt; 
+  deallocate prepare stmt; 
+    END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spEditQuestion1`(IN `exam_name` VARCHAR(40), IN `emailAdd` VARCHAR(40), IN `claimNum` INT(11), IN `recvdDate` DATE, IN `questionIn` TEXT, IN `catIn` INT(11), IN `responseIn` TEXT, IN `responseDate` DATE, IN `smeIn` INT(11), IN `statusIn` VARCHAR(30), IN `questID` INT(11), IN `smeName` VARCHAR(80), IN `cat_name` VARCHAR(40))
+    NO SQL
+BEGIN
+
+UPDATE `question` SET examiner_name = exam_name, email = emailAdd, claim_no = claimNum, clm_recvd_date = recvdDate, question_txt = questionIn, cat_id = catIn, response = responseIn, resp_date = responseDate, sme_id = smeIn, status = statusIn WHERE q_id = questID;
+
+UPDATE `question` AS q JOIN sme AS s 
+SET q.sme_id=s.sme_id WHERE q_id = questID AND concat(s.sme_fname, ' ', s.sme_lname) = smeName;
+
+UPDATE `question` AS q JOIN category AS c
+SET q.cat_id = c.cat_id WHERE q_id = questID AND c.cat_name = cat_name;
+
+END$$
+DELIMITER ;
