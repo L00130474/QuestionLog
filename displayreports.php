@@ -12,14 +12,14 @@
                 <a class="navbar-brand" href="Default.html">Optum Question Log</a>
             </div>
             <ul class="nav navbar-nav">
-                <li class="active"><a href="Default.html">Home</a></li>               
+                <li class="active"><a href="Default.html">Home</a></li>
                 <li><a href="admin.html">SME Log In</a></li>
-                <li><a href="about.html">About</a></li>                
+                <li><a href="about.html">About</a></li>
             </ul>
         </div>
-    </nav>     
+    </nav>
 
-    <div id="main" class="container theme-showcase" role="main">        
+    <div id="main" class="container theme-showcase" role="main">
         <div class="panel panel-primary">
             <!-- Default panel contents -->
             <div class="panel-heading">Panel heading</div>
@@ -28,10 +28,14 @@
                 $server="localhost";
                 $dbuser="root";
                 $password="";
+
                 $link=mysqli_connect($server,$dbuser,$password);
                 mysqli_select_db($link, "question_log");
+                $fromDate=$_GET["fromDate"];
+                $toDate=$_GET["toDate"];
 
-                $sql="CALL spDisplayManagedQs";
+                $sql="CALL spOverallReport('$fromDate', '$toDate')";
+
                 $result=mysqli_query($link,$sql);
 
                 if(mysqli_num_rows($result)>0)
@@ -40,36 +44,77 @@
                     ";
                     echo "
                     <tr>
-                        <td><strong>Examiner</strong></td>
-                        <td><strong>Claim Number</strong></td>
-                        <td><strong>Received Date</strong></td>
-                        <td><strong>Question</strong></td>
-                        <td><strong>SME</strong></td>
-                        <td><strong>Category</strong></td>
-                        <td><strong>Status</strong></td>
-                        <td><strong>Respond</strong></td>
-                        <td><strong>Delete</strong></td>
+                        <td><strong>Overall</strong></td>
+                        <td><strong>Question Volume</strong></td>
+                        <td><strong>Min. Tat (Days)</strong></td>
+                        <td><strong>Max. Tat (Days)</strong></td>
+                        <td><strong>Avg. Tat (Days)</strong></td>
                     </tr>";
                     while($row=mysqli_fetch_array($result)){
-                    $q_id=$row["q_id"];
-                    $examiner_name=$row["examiner_name"];
-                    $claim_no=$row["claim_no"];
-                    $clm_recvd_date=$row["clm_recvd_date"];
-                    $question_txt=$row["question_txt"];
-                    $sme_name=$row["sme_name"];
-                    $cat_name=$row["cat_name"];
-                    $status=$row["status"];
+                    $volume=$row["volume"];
+                    $min_tat=$row["min_tat"];
+                    $max_tat=$row["max_tat"];
+                    $avg_tat=$row["avg_tat"];
                     echo"
-                    <tr>                        
-                        <td>$examiner_name</td>                        
-                        <td>$claim_no</td>
-                        <td>$clm_recvd_date</td>
-                        <td>$question_txt</td>
-                        <td>$sme_name</td>
-                        <td>$cat_name</td>
-                        <td>$status</td>                        
-                        <td><a href='editquestion.php?q_id=$q_id'>Respond</a></td>
-                        <td><a href='confirmdeletequestion.php?q_id=$q_id'>Delete</a></td>
+                    <tr>
+                        <td>Overall</td>
+                        <td>$volume</td>
+                        <td>$min_tat</td>
+                        <td>$max_tat</td>
+                        <td>$avg_tat</td>
+                    </tr>";
+                    }
+                    echo"
+                </table>";
+                }
+                else
+                {echo("No entries to display");}
+                mysqli_close($link);
+                ?>
+            </div>
+        </div>
+        <div class="panel panel-primary">
+            <!-- Default panel contents -->
+            <div class="panel-heading">Panel heading</div>
+            <div class="panel-body">
+                <?php
+                $server="localhost";
+                $dbuser="root";
+                $password="";
+
+                $link=mysqli_connect($server,$dbuser,$password);
+                mysqli_select_db($link, "question_log");
+                $fromDate=$_GET["fromDate"];
+                $toDate=$_GET["toDate"];
+
+                $sql="CALL spOverallReport('$fromDate', '$toDate')";
+
+                $result=mysqli_query($link,$sql);
+
+                if(mysqli_num_rows($result)>0)
+                {
+                echo "<table>
+                    ";
+                    echo "
+                    <tr>
+                        <td><strong>Overall</strong></td>
+                        <td><strong>Question Volume</strong></td>
+                        <td><strong>Min. Tat (Days)</strong></td>
+                        <td><strong>Max. Tat (Days)</strong></td>
+                        <td><strong>Avg. Tat (Days)</strong></td>
+                    </tr>";
+                    while($row=mysqli_fetch_array($result)){
+                    $volume=$row["volume"];
+                    $min_tat=$row["min_tat"];
+                    $max_tat=$row["max_tat"];
+                    $avg_tat=$row["avg_tat"];
+                    echo"
+                    <tr>
+                        <td>Overall</td>
+                        <td>$volume</td>
+                        <td>$min_tat</td>
+                        <td>$max_tat</td>
+                        <td>$avg_tat</td>
                     </tr>";
                     }
                     echo"
