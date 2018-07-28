@@ -48,12 +48,12 @@
                 $resp_date=$row["resp_date"];
                 $sme_id=$row["sme_id"];
                 $status=$row["status"];
-
-                $sqlSme = "SELECT * FROM sme";
+                
+                $sqlSme = "SELECT concat(sme_fname, ' ', sme_lname) as sme_name FROM sme";
                 $result2=mysqli_query($link,$sqlSme);
                 $row2=mysqli_fetch_array($result2);
-
-                $sqlCat = "SELECT * FROM category";
+                
+                $sqlCat = "SELECT cat_name FROM category";
                 $result3=mysqli_query($link,$sqlCat);
                 $row3=mysqli_fetch_array($result3);
 
@@ -133,12 +133,12 @@
                                 </div>
                                 <div class="col-md-3">
 
-                                    <select name="cat_id" class="chosen-select" style="width: 160px;">
+                                    <select name="cat_name" class="chosen-select" style="width: 160px;">
                                         <?php
                                         WHILE($row3=mysqli_fetch_array($result3))
                                         {
                                         ?>                                        
-                                        <option><?php echo $row3["cat_id"]; ?></option>
+                                        <option><?php echo $row3["cat_name"]; ?></option>
                                         <?php
                                         }
                                         ?>
@@ -193,12 +193,12 @@
                                 </div>
                                 <div class="col-md-3">
 
-                                    <select name="sme_id" class="chosen-select" style="width: 160px;">
+                                    <select name="sme_name" class="chosen-select" style="width: 160px;">
                                         <?php
                                         WHILE($row2=mysqli_fetch_array($result2))
                                         {
                                         ?>
-                                        <option><?php echo $row2["sme_id"];?></option>
+                                        <option><?php echo $row2["sme_name"];?></option>
                                         <?php
                                         }
                                         ?>

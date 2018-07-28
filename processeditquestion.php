@@ -37,13 +37,13 @@
                 $claim_no=$_POST["claim_no"];
                 $clm_recvd_date=$_POST["clm_recvd_date"];
                 $question=$_POST["question"];
-                $cat_id=$_POST["cat_id"];
                 $response=$_POST["response"];
                 $resp_date=$_POST["resp_date"];
-                $sme_id=$_POST["sme_id"];
                 $status=$_POST["status"];
+                $sme_name=$_POST["sme_name"];
+                $cat_name=$_POST["cat_name"];
 
-                $sql_update="CALL spEditQuestion('$examiner_name', '$email', '$claim_no',  '$clm_recvd_date', '$question', '$cat_id', '$response','$resp_date','$sme_id','$status','$q_id')";
+                $sql_update="CALL spEditQuestion1('$examiner_name', '$email', '$claim_no',  '$clm_recvd_date', '$question', '$response','$resp_date','$status','$q_id', '$sme_name', '$cat_name')";
 
                  $retval = mysqli_query($link, $sql_update);
 
