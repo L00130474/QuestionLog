@@ -218,7 +218,7 @@
                                     <select name="status" class="chosen-select" style="width: 100px;">
                                         <option>Pending</option>
                                         <option>Assigned</option>
-                                        <option>Closed</option>
+                                        <option>Answered</option>
                                     </select>
                                 </div>
                             </div>
