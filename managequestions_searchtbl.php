@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title>Home Page</title>
+    <title>Manage Questions</title>
     <script src="Scripts/jquery-3.1.0.min.js"></script>
     <meta charset="utf-8" />
 </head>
@@ -12,23 +12,15 @@
                 <a class="navbar-brand" href="Default.html">Optum Question Log</a>
             </div>
             <ul class="nav navbar-nav">
-                <li class="active"><a href="Default.php">Home</a></li>
-                <li><a href="addquestion.php">Submit Question</a></li>
-                <li><a href="adminlogin.php">SME Log In</a></li>
-                <li><a href="about.php">About</a></li>
+                <li class="active"><a href="Default.html">Home</a></li>
+                <li><a href="admin.html">SME Log In</a></li>
+                <li><a href="about.html">About</a></li>
             </ul>
         </div>
-    </nav>    
+    </nav>
 
     <div id="main" class="container theme-showcase" role="main">
-        <div class="jumbotron">
-            <h1>Welcome</h1>
-            <p>This is some info</p>
-            <p><a class="btn btn-primary btn-lg" href="addquestion.php" role="button">Submit a Question</a></p>
-        </div>
         <div class="panel panel-primary">
-
-
             <!-- Default panel contents -->
             <div class="panel-heading">Panel heading</div>
             <div class="panel-body">
@@ -39,21 +31,21 @@
                 $link=mysqli_connect($server,$dbuser,$password);
                 mysqli_select_db($link, "question_log");
 
-                $sql="CALL spDisplayApprovedQs";
+                $sql="CALL spDisplayManagedQs";
                 $result=mysqli_query($link,$sql);
                 ?>
-                <table id="questiontbl" class="table table-striped table-bordered" style="width:100%">
+                <table id="manageqstbl" class="table table-striped table-bordered" style="width:100%">
                     <thead>
                         <tr>
                             <td><strong>Examiner</strong></td>
                             <td><strong>Claim Number</strong></td>
                             <td><strong>Received Date</strong></td>
                             <td><strong>Question</strong></td>
-                            <td><strong>Question Date</strong></td>
-                            <td><strong>Response</strong></td>
-                            <td><strong>Response Date</strong></td>
                             <td><strong>SME</strong></td>
+                            <td><strong>Category</strong></td>
                             <td><strong>Status</strong></td>
+                            <td><strong>Respond</strong></td>
+                            <td><strong>Delete</strong></td>
                         </tr>
                     </thead>
                     <?php
@@ -65,10 +57,8 @@
                     $claim_no=$row["claim_no"];
                     $clm_recvd_date=$row["clm_recvd_date"];
                     $question_txt=$row["question_txt"];
-                    $q_date=$row["q_date"];
-                    $response=$row["response"];
-                    $resp_date=$row["resp_date"];
                     $sme_name=$row["sme_name"];
+                    $cat_name=$row["cat_name"];
                     $status=$row["status"];
                     echo "
                     <tr>
@@ -76,15 +66,14 @@
                         <td>$claim_no</td>
                         <td>$clm_recvd_date</td>
                         <td>$question_txt</td>
-                        <td>$q_date</td>
-                        <td>$response</td>
-                        <td>$resp_date</td>
                         <td>$sme_name</td>
+                        <td>$cat_name</td>
                         <td>$status</td>
+                        <td><a href='editquestion.php?q_id=$q_id'>Respond</a></td>
+                        <td><a href='confirmdeletequestion.php?q_id=$q_id'>Delete</a></td>
                     </tr>
                     " ;
                     }
-
                     }
                     else
                     {echo("No entries to display");}
@@ -109,10 +98,11 @@
 
 <script>
     $(document).ready(function () {
-        $('#questiontbl').DataTable({
-            "order": [[4, "desc"]]
+        $('#manageqstbl').DataTable({
+            "order": [[6, "desc"]]
         });
     });
 </script>
+
 
 <!--https://getbootstrap.com/docs/3.3/components/-->

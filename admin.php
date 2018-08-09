@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title>SME Section</title>
+    <title>SME Area</title>
     <script src="Scripts/jquery-3.1.0.min.js"></script>
     <meta charset="utf-8" />
 </head>
@@ -12,21 +12,33 @@
                 <a class="navbar-brand" href="Default.html">Optum Question Log</a>
             </div>
             <ul class="nav navbar-nav">
-                <li class="active"><a href="Default.html">Home</a></li>               
-                <li><a href="admin.html">SME Log In</a></li>
-                <li><a href="about.html">About</a></li>                
+                <li class="active"><a href="Default.html">Home</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="adminlogin.php">
+                        SME Area
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="adminlogin.php">Log In</a></li>
+                        <li><a href="managequestions_searchtbl.php">Manage Questions</a></li>
+                        <li><a href="displayreports.php">Display Reports</a></li>
+                    </ul>
+                </li>
+                <li><a href="about.html">About</a></li>
             </ul>
         </div>
-    </nav> 
-    
+    </nav>
+
 
     <div id="main" class="container theme-showcase" role="main">
         <div class="panel panel-primary">
             <!-- Default panel contents -->
             <div class="panel-heading">Panel heading</div>
             <div class="panel-body">
-                <p>Main</p>
-            </div>           
+                <a class="btn btn-primary btn-lg" href="managequestions_searchtbl.php" role="button">Manage Questions</a>
+                <br /><br />
+                <a class="btn btn-primary btn-lg" href="displayreports.php" role="button">Display Reports</a>
+            </div>
         </div>
     </div>
 

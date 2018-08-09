@@ -102,10 +102,12 @@
                     <!-- Submit -->
                     <div class="row">
                         <div class="col-md-3">
-                            <div id="submitQ" dx-button="btnSubmit">
-                                <input type="submit" name="submit" value="Submit Question" />
-                            </div>
+                            
+                            
                         </div>
+                    </div>
+                    <div id="submitQ" dx-button="btnSubmit">
+                        <input type="submit" name="submit" value="Submit Question" />
                     </div>
                 </form>
 
