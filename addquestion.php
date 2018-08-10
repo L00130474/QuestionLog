@@ -20,7 +20,7 @@
     </nav>
 
     <div id="main" class="container theme-showcase" role="main">
-        <div class="panel panel-primary">
+        <div>
             <!-- Default panel contents -->
             <div id="form">
                 <form method="post" action="processaddquestion.php">
@@ -99,15 +99,9 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Submit -->
-                    <div class="row">
-                        <div class="col-md-3">
-                            
-                            
-                        </div>
-                    </div>
+                   
                     <div id="submitQ" dx-button="btnSubmit">
-                        <input type="submit" name="submit" value="Submit Question" />
+                        <input type="submit" name="submit" value="Submit Question" class="btn btn-primary btn-lg" />
                     </div>
                 </form>
 

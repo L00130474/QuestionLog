@@ -32,7 +32,7 @@
                 $link=mysqli_connect($server,$dbuser,$password);
                 mysqli_select_db($link, "question_log");
 
-                $sql="SELECT * FROM QUESTION WHERE q_id=$q_id";
+                $sql="CALL spQuestionDetails($q_id)";
                 $result=mysqli_query($link,$sql);
                 $row=mysqli_fetch_array($result);
 
@@ -48,14 +48,24 @@
                 $resp_date=$row["resp_date"];
                 $sme_id=$row["sme_id"];
                 $status=$row["status"];
-                
+                $sme_nameSelected=$row["sme_name"];
+                $cat_nameSelected=$row["cat_name"];
+
+                mysqli_close($link);
+
+
+                $server="localhost";
+                $dbuser="root";
+                $password="";
+                $q_id=$_GET["q_id"];
+                $link=mysqli_connect($server,$dbuser,$password);
+                mysqli_select_db($link, "question_log");
+
                 $sqlSme = "SELECT concat(sme_fname, ' ', sme_lname) as sme_name FROM sme";
                 $result2=mysqli_query($link,$sqlSme);
-                $row2=mysqli_fetch_array($result2);
                 
                 $sqlCat = "SELECT cat_name FROM category";
                 $result3=mysqli_query($link,$sqlCat);
-                $row3=mysqli_fetch_array($result3);
 
                 mysqli_close($link);
                 ?>
@@ -135,12 +145,14 @@
 
                                     <select name="cat_name" class="chosen-select" style="width: 160px;">
                                         <?php
-                                        WHILE($row3=mysqli_fetch_array($result3))
-                                        {
-                                        ?>                                        
-                                        <option><?php echo $row3["cat_name"]; ?></option>
-                                        <?php
-                                        }
+                                            WHILE($row3=mysqli_fetch_array($result3))
+                                            {
+                                                $catName=$row3["cat_name"];
+                                                If($catName == $cat_nameSelected)
+                                                    echo "<option selected>$catName</option>";
+                                                else
+                                                    echo "<option>$catName</option>";
+                                            }
                                         ?>
                                     </select>
                                 </div>
@@ -194,12 +206,15 @@
                                 <div class="col-md-3">
                                     <select name="sme_name" class="chosen-select" style="width: 160px;">
                                         <?php
-                                        WHILE($row2=mysqli_fetch_array($result2))
-                                        {
-                                        ?>
-                                        <option><?php echo $row2["sme_name"];?></option>
-                                        <?php
-                                        }
+                                            WHILE($row2=mysqli_fetch_array($result2))
+                                            {
+                                                $smeName=$row2["sme_name"];
+                                                If($smeName == $sme_nameSelected)
+                                                echo "
+                                                <option selected>$smeName</option>";
+                                                else
+                                                echo "<option>$smeName</option>";
+                                            }
                                         ?>
                                     </select>
                                 </div>
