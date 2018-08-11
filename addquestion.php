@@ -12,8 +12,20 @@
                 <a class="navbar-brand" href="default.php">Optum Question Log</a>
             </div>
             <ul class="nav navbar-nav">
-                <li class="active"><a href="default.php">Home</a></li>
-                <li><a href="admin.html">SME Log In</a></li>
+                <li><a href="default.php">Home</a></li>
+                <li class="active"><a href="addquestion.php">Add Question</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="adminlogin.php">
+                        SME Area
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="adminlogin.php">Log In</a></li>
+                        <li><a href="managequestions.php">Manage Questions</a></li>
+                        <li><a href="displayreports.php">Display Reports</a></li>
+                    </ul>
+                </li>
+                <li><a href="contactus.php">Contact Us</a></li>
                 <li><a href="about.html">About</a></li>
             </ul>
         </div>
@@ -99,9 +111,10 @@
                             </div>
                         </div>
                     </div>
-                   
+
                     <div id="submitQ" dx-button="btnSubmit">
                         <input type="submit" name="submit" value="Submit Question" class="btn btn-primary btn-lg" />
+                        <button class="btn btn-primary btn-lg" onclick="goBack()">Back</button>
                     </div>
                 </form>
 
@@ -137,6 +150,11 @@
     }
     for (var selector in config) {
         $(selector).chosen(config[selector]);
+    }
+</script>
+<script>
+    function goBack() {
+        window.history.back();
     }
 </script>
 <!--https://getbootstrap.com/docs/3.3/components/-->

@@ -12,14 +12,14 @@
                 <a class="navbar-brand" href="Default.html">Optum Question Log</a>
             </div>
             <ul class="nav navbar-nav">
-                <li class="active"><a href="Default.html">Home</a></li>
+                <li class="active"><a href="Default.html">Home</a></li>               
                 <li><a href="admin.html">SME Log In</a></li>
-                <li><a href="about.html">About</a></li>
+                <li><a href="about.html">About</a></li>                
             </ul>
         </div>
-    </nav>
+    </nav>     
 
-    <div id="main" class="container theme-showcase" role="main">
+    <div id="main" class="container theme-showcase" role="main">        
         <div class="panel panel-primary">
             <!-- Default panel contents -->
             <div class="panel-heading">Panel heading</div>
@@ -33,24 +33,23 @@
 
                 $sql="CALL spDisplayManagedQs";
                 $result=mysqli_query($link,$sql);
-                ?>
-                <table id="manageqstbl" class="table table-striped table-bordered" style="width:100%">
-                    <thead>
-                        <tr>
-                            <td><strong>Examiner</strong></td>
-                            <td><strong>Claim Number</strong></td>
-                            <td><strong>Received Date</strong></td>
-                            <td><strong>Question</strong></td>
-                            <td><strong>SME</strong></td>
-                            <td><strong>Category</strong></td>
-                            <td><strong>Status</strong></td>
-                            <td><strong>Respond</strong></td>
-                            <td><strong>Delete</strong></td>
-                        </tr>
-                    </thead>
-                    <?php
-                    if(mysqli_num_rows($result)>0)
-                    {
+
+                if(mysqli_num_rows($result)>0)
+                {
+                echo "<table>
+                    ";
+                    echo "
+                    <tr>
+                        <td><strong>Examiner</strong></td>
+                        <td><strong>Claim Number</strong></td>
+                        <td><strong>Received Date</strong></td>
+                        <td><strong>Question</strong></td>
+                        <td><strong>SME</strong></td>
+                        <td><strong>Category</strong></td>
+                        <td><strong>Status</strong></td>
+                        <td><strong>Respond</strong></td>
+                        <td><strong>Delete</strong></td>
+                    </tr>";
                     while($row=mysqli_fetch_array($result)){
                     $q_id=$row["q_id"];
                     $examiner_name=$row["examiner_name"];
@@ -60,49 +59,36 @@
                     $sme_name=$row["sme_name"];
                     $cat_name=$row["cat_name"];
                     $status=$row["status"];
-                    echo "
-                    <tr>
-                        <td>$examiner_name</td>
+                    echo"
+                    <tr>                        
+                        <td>$examiner_name</td>                        
                         <td>$claim_no</td>
                         <td>$clm_recvd_date</td>
                         <td>$question_txt</td>
                         <td>$sme_name</td>
                         <td>$cat_name</td>
-                        <td>$status</td>
+                        <td>$status</td>                        
                         <td><a href='editquestion.php?q_id=$q_id'>Respond</a></td>
                         <td><a href='confirmdeletequestion.php?q_id=$q_id'>Delete</a></td>
-                    </tr>
-                    " ;
+                    </tr>";
                     }
-                    }
-                    else
-                    {echo("No entries to display");}
-                    mysqli_close($link);
-                    ?>
-                </table>
+                    echo"
+                </table>";
+                }
+                else
+                {echo("No entries to display");}
+                mysqli_close($link);
+                ?>
             </div>
         </div>
     </div>
+
 </body>
 </html>
 <script src="Scripts/bootstrap.js"></script>
 <link href="Styles/bootstrap/bootstrap.css" rel="stylesheet" />
 <link href="Styles/bootstrap/bootstrap-theme.min.css" rel="stylesheet" />
 <link href="Styles/DatePicker/css/bootstrap-datepicker.min.css" rel="stylesheet" />
-<script src="Styles/DatePicker/js/bootstrap-datepicker.js"></script>
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
-
-<script>
-    $(document).ready(function () {
-        $('#manageqstbl').DataTable({
-            "order": [[6, "desc"]]
-        });
-    });
-</script>
 
 
 <!--https://getbootstrap.com/docs/3.3/components/-->
