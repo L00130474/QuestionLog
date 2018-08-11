@@ -11,11 +11,23 @@
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="Default.html">Optum Question Log</a>
+                <a class="navbar-brand" href="default.php">Optum Question Log</a>
             </div>
             <ul class="nav navbar-nav">
-                <li class="active"><a href="Default.html">Home</a></li>
-                <li><a href="admin.html">SME Log In</a></li>
+                <li><a href="default.php">Home</a></li>
+                <li><a href="addquestion.php">Submit Question</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="adminlogin.php">
+                        SME Area
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="adminlogin.php">Log In</a></li>
+                        <li><a href="managequestions.php">Manage Questions</a></li>
+                        <li><a href="displayreports.php?fromDate=2000-01-01&toDate=2099-01-01">Display Reports</a></li>
+                    </ul>
+                </li>
+                <li><a href="contactus.php">Contact Us</a></li>
                 <li><a href="about.html">About</a></li>
             </ul>
         </div>
@@ -48,22 +60,19 @@
                             <input id="toDate" type="text" class="input-sm form-control" name="toDate" required="required" />
                         </div>
                     </div>
+                    <!-- Update Dates -->
+                    <div class="col-md-3">
+                        <div id="submitQ" dx-button="btnSubmit">
+                            <input type="submit" name="submit" id="btnSubmitDates" class="btn btn-primary btn-sm" value="Generate Reports" />
+                        </div>
+                    </div>
                 </div>
+            </div>
+        </div>
 
-                <!-- Padding -->
-                <div class="row">
-                    <br />
-                </div>
-            </div>
-        </div>
-        <!-- Submit -->
-        <div class="row">
-            <div class="col-md-3">
-                <div id="submitQ" dx-button="btnSubmit">
-                    <input type="submit" name="submit" id ="btnSubmitDates" value="Generate Reports" />
-                </div>
-            </div>
-        </div>
+
+
+
 
 
 
@@ -102,9 +111,17 @@
                     while($row=mysqli_fetch_array($result)){
                     $status=$row["status"];
                     $volume=$row["volume"];
+                          if ($volume == '')
+                          $volume = '0';
                     $max_tat=$row["max_tat"];
+                          if ($max_tat == '')
+                          $max_tat = 'N/A';
                     $avg_lag=$row["avg_lag"];
+                          if ($avg_lag == '')
+                          $avg_lag = 'N/A';
                     $avg_tat=$row["avg_tat"];
+                          if ($avg_tat == '')
+                          $avg_tat = 'N/A';
                     echo"
                     <tr>
                         <td>$status</td>
@@ -154,9 +171,17 @@
                     while($row=mysqli_fetch_array($result)){
                     $status=$row["status"];
                     $volume=$row["volume"];
+                          if ($volume == '')
+                          $volume = '0';
                     $max_lag=$row["max_lag"];
+                          if ($max_lag == '')
+                          $max_lag = 'N/A';
                     $avg_lag=$row["avg_lag"];
+                          if ($avg_lag == '')
+                          $avg_lag = 'N/A';
                     $avg_tat=$row["avg_tat"];
+                          if ($avg_tat == '')
+                          $avg_tat = 'N/A';
                     echo"
                     <tr>
                         <td>$status</td>
@@ -207,10 +232,20 @@
                     </tr>";
                     while($row=mysqli_fetch_array($result)){
                     $regn_name=$row["regn_name"];
+                          if ($regn_name == '')
+                          $regn_name = 'Unassigned';
                     $volume=$row["volume"];
+                          if ($volume == '')
+                          $volume = '0';
                     $min_tat=$row["min_tat"];
+                          if ($min_tat == '')
+                          $min_tat = 'N/A';
                     $max_tat=$row["max_tat"];
+                          if ($max_tat == '')
+                          $max_tat = 'N/A';
                     $avg_tat=$row["avg_tat"];
+                          if ($avg_tat == '')
+                          $avg_tat = 'N/A';
                     echo"
                     <tr>
                         <td>$regn_name</td>
@@ -261,12 +296,21 @@
                     </tr>";
                     while($row=mysqli_fetch_array($result)){
                     $sup_name=$row["sup_name"];
-                    if ($sup_name == '')
-                        $sup_name = 'Not Assigned';
-                    $volume=$row["volume"];
+                        if ($sup_name == '')
+                        $sup_name = 'Unassigned';
+                   $volume=$row["volume"];
+                          if ($volume == '')
+                          $volume = '0';
                     $min_tat=$row["min_tat"];
+                          if ($min_tat == '')
+                          $min_tat = 'N/A';
                     $max_tat=$row["max_tat"];
+                          if ($max_tat == '')
+                          $max_tat = 'N/A';
                     $avg_tat=$row["avg_tat"];
+                          if ($avg_tat == '')
+                          $avg_tat = 'N/A';
+                
                     echo"
                     <tr>
                         <td>$sup_name</td>
