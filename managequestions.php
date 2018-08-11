@@ -22,7 +22,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="adminlogin.php">Log In</a></li>
                         <li><a href="managequestions.php">Manage Questions</a></li>
-                        <li><a href="displayreports.php">Display Reports</a></li>
+                        <li><a href="displayreports.php?fromDate=2000-01-01&toDate=2099-01-01">Display Reports</a></li>
                     </ul>
                 </li>
                 <li><a href="contactus.php">Contact Us</a></li>
@@ -32,9 +32,8 @@
     </nav>
 
     <div id="main" class="container theme-showcase" role="main">
-        <div class="panel panel-primary">
-            <!-- Default panel contents -->
-            <div class="panel-heading">Panel heading</div>
+        <div class="panel panel-primary">            
+            <div class="panel-heading">Respond to or Delete a question</div>
             <div class="panel-body">
                 <?php
                 $server="localhost";
@@ -43,6 +42,7 @@
                 $link=mysqli_connect($server,$dbuser,$password);
                 mysqli_select_db($link, "question_log");
 
+                //Call Stored Procedure
                 $sql="CALL spDisplayManagedQs";
                 $result=mysqli_query($link,$sql);
                 ?>
@@ -80,7 +80,7 @@
                         <td>$question_txt</td>
                         <td>$sme_name</td>
                         <td>$cat_name</td>
-                        <td>$status</td>
+                        <td>$status</td> 
                         <td><a href='editquestion.php?q_id=$q_id'>Respond</a></td>
                         <td><a href='confirmdeletequestion.php?q_id=$q_id'>Delete</a></td>
                     </tr>
@@ -92,8 +92,9 @@
                     mysqli_close($link);
                     ?>
                 </table>
-            </div>
+            </div>            
         </div>
+        <div><button class="btn btn-primary btn-lg" onclick="goBack()">Back</button></div>
     </div>
 </body>
 </html>
@@ -114,6 +115,11 @@
             "order": [[6, "desc"]]
         });
     });
+</script>
+<script>
+    function goBack() {
+        window.history.back();
+    }
 </script>
 
 
