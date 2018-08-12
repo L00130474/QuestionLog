@@ -59,12 +59,11 @@
                 $response=$row["response"];
                 $resp_date=$row["resp_date"];
                 $sme_id=$row["sme_id"];
-                $status=$row["status"];
+                $statusSelected=$row["status"];
                 $sme_nameSelected=$row["sme_name"];
                 $cat_nameSelected=$row["cat_name"];
 
                 mysqli_close($link);
-
 
                 $server="localhost";
                 $dbuser="root";
@@ -88,12 +87,13 @@
                         <input type="hidden" name="q_id" value="<?php echo $q_id; ?>" />
 
                         <div class="panel-body">
+
                             <div class="row">
                                 <div class="col-md-2">
                                     Examiner Name:
                                 </div>
                                 <div class="col-md-3">
-                                    <input name="examiner_name" type="text" class="form-control" value="<?php echo $examiner_name ;?>" />
+                                    <input name="examiner_name" type="text" class="form-control" value="<?php echo $examiner_name ;?>" disabled />
                                 </div>
 
                                 <!-- Padding -->
@@ -104,7 +104,7 @@
                                     Email Address:
                                 </div>
                                 <div class="col-md-3">
-                                    <input name="email" type="email" class="form-control" value="<?php echo $email ;?>" />
+                                    <input name="email" type="email" class="form-control" value="<?php echo $email ;?>" disabled/>
                                 </div>
                             </div>
 
@@ -118,7 +118,7 @@
                                     Claim Number:
                                 </div>
                                 <div class="col-md-3">
-                                    <input name="claim_no" type="text" class="form-control" value="<?php echo $claim_no ;?>" />
+                                    <input name="claim_no" type="text" class="form-control" value="<?php echo $claim_no ;?>" disabled/>
                                 </div>
 
                                 <!-- Padding -->
@@ -126,10 +126,10 @@
                                 </div>
 
                                 <div class="col-md-2">
-                                    Received Date
+                                    Received Date:
                                 </div>
                                 <div class="col-md-3">
-                                    <input name="clm_recvd_date" type="text" class="form-control" value="<?php echo $clm_recvd_date ;?>" />
+                                    <input name="clm_recvd_date" type="text" class="form-control" value="<?php echo $clm_recvd_date ;?>" disabled/>
                                 </div>
                             </div>
 
@@ -143,7 +143,7 @@
                                     Question Date:
                                 </div>
                                 <div class="col-md-3">
-                                    <input name="q_date" type="text" class="form-control" value="<?php echo $q_date ;?>" />
+                                    <input name="q_date" type="text" class="form-control" value="<?php echo $q_date ;?>" disabled />
                                 </div>
 
                                 <!-- Padding -->
@@ -177,7 +177,7 @@
 
                             <div class="row">
                                 <div class="col-md-2">
-                                    Question
+                                    Question:
                                 </div>
                                 <div class="col-md-3">
                                     <textarea name="question" rows="8" class="form-control"> <?php echo $question ;?></textarea>
@@ -263,7 +263,6 @@
             </div>
         </div>
     </div>
-
 </body>
 </html>
 <script src="Scripts/bootstrap.js"></script>
@@ -281,18 +280,6 @@
     });
 </script>
 
-<script type="text/javascript">
-    var config = {
-        '.chosen-select': {},
-        '.chosen-select-deselect': { allow_single_deselect: true },
-        '.chosen-select-no-single': { disable_search_threshold: 15 },
-        '.chosen-select-no-results': { no_results_text: 'No Matches' },
-        '.chosen-select-width': { width: "95%" }
-    }
-    for (var selector in config) {
-        $(selector).chosen(config[selector]);
-    }
-</script>
 <script>
     function goBack() {
         window.history.back();
