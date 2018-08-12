@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title>SubmitQuestion</title>
+    <title>Submit Question</title>
     <script src="Scripts/jquery-3.1.0.min.js"></script>
     <meta charset="utf-8" />
 </head>
@@ -22,7 +22,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="adminlogin.php">Log In</a></li>
                         <li><a href="managequestions.php">Manage Questions</a></li>
-                        <li><a href="displayreports.php?fromDate=2000-01-01&toDate=2099-01-01">Display Reports</a></li>
+                        <li><a href="displayreports.php?fromDate=1900-01-01&toDate=2099-01-01">Display Reports</a></li>
                     </ul>
                 </li>
                 <li><a href="contactus.php">Contact Us</a></li>
@@ -85,11 +85,11 @@
                                 <div class="col-md-2">
                                     Claim Received Date:
                                 </div>
-                                <div class="col-md-3">
 
+                                <div class="col-md-3">                                    
                                     <div class="input-daterange input-group" id="datepicker" data-provide="datepicker">
-                                        <span class="input-group-addon">From</span>
-                                        <input id="recdDate" type="text" class="input-sm form-control" name="clm_recvd_date" />
+                                        <span class="input-group-addon">Date</span>
+                                        <input id="recdDate" type="text" required="required" class="input-sm form-control" name="clm_recvd_date" />
                                     </div>
                                 </div>
                             </div>
@@ -106,14 +106,14 @@
                                     Question:
                                 </div>
                                 <div class="col-md-3">
-                                    <textarea name="question" rows="8" cols="35" required="required" placeholder="Enter Your Question Here"></textarea>
+                                    <textarea name="question" class="form-control" rows="8" required="required" placeholder="Enter Your Question Here"></textarea>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div id="submitQ" dx-button="btnSubmit">
-                        <input type="submit" name="submit" value="Submit Question" class="btn btn-primary btn-lg" />
+                        <input type="submit" name="submit" value="Submit" class="btn btn-primary btn-lg" />
                         <button class="btn btn-primary btn-lg" onclick="goBack()">Back</button>
                     </div>
                 </form>
@@ -133,6 +133,7 @@
 
 <!--Date Time Picker-->
 <script src="Styles/DatePicker/js/bootstrap-datepicker.js"></script>
+
 <script>
     $('.input-daterange').datepicker({
         format: 'yyyy-mm-dd',
@@ -140,18 +141,7 @@
         clearBtn: true
     });
 </script>
-<script type="text/javascript">
-    var config = {
-        '.chosen-select': {},
-        '.chosen-select-deselect': { allow_single_deselect: true },
-        '.chosen-select-no-single': { disable_search_threshold: 15 },
-        '.chosen-select-no-results': { no_results_text: 'No Matches' },
-        '.chosen-select-width': { width: "95%" }
-    }
-    for (var selector in config) {
-        $(selector).chosen(config[selector]);
-    }
-</script>
+
 <script>
     function goBack() {
         window.history.back();

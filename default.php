@@ -6,6 +6,8 @@
     <meta charset="utf-8" />
 </head>
 <body>
+
+    <!--Menu-->
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -22,7 +24,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="adminlogin.php">Log In</a></li>
                         <li><a href="managequestions.php">Manage Questions</a></li>
-                        <li><a href="displayreports.php?fromDate=2000-01-01&toDate=2099-01-01">Display Reports</a></li>
+                        <li><a href="displayreports.php?fromDate=1900-01-01&toDate=2099-01-01">Display Reports</a></li>
                     </ul>
                 </li>
                 <li><a href="contactus.php">Contact Us</a></li>
@@ -31,18 +33,23 @@
         </div>
     </nav> 
 
+    <!--Main Container-->
     <div id="main" class="container theme-showcase" role="main">
+
+        <!--Jumbotron-->
         <div class="jumbotron">
             <h1>Online Question Log</h1>
             <p>Browse questions by entering key word(s) in the search box below or submit a new question.</p>
             <p><a class="btn btn-primary btn-lg" href="addquestion.php" role="button">Submit a Question</a></p>
         </div>
-        <div class="panel panel-primary">
 
+        <div class="panel panel-primary">
 
             <!-- Default panel contents -->
             <div class="panel-heading">Please browse or search as your question may already have been answered!</div>
             <div class="panel-body">
+
+                <!--Connect to database and call stored procedure-->
                 <?php
                 $server="localhost";
                 $dbuser="root";
@@ -53,52 +60,56 @@
                 $sql="CALL spDisplayApprovedQs";
                 $result=mysqli_query($link,$sql);
                 ?>
+
+                <!--DataTable Headings-->
                 <table id="questiontbl" class="table table-striped table-bordered" style="width:100%">
-                    <thead>
-                        <tr>
-                            <td><strong>Examiner</strong></td>
-                            <td><strong>Claim Number</strong></td>
-                            <td><strong>Received Date</strong></td>
-                            <td><strong>Question</strong></td>
-                            <td><strong>Question Date</strong></td>
-                            <td><strong>Response</strong></td>
-                            <td><strong>Response Date</strong></td>
-                            <td><strong>SME</strong></td>
-                            <td><strong>Status</strong></td>
-                        </tr>
-                    </thead>
+                    <tr>
+                        <td><strong>Examiner</strong></td>
+                        <td><strong>Claim Number</strong></td>
+                        <td><strong>Received Date</strong></td>
+                        <td><strong>Question</strong></td>
+                        <td><strong>Question Date</strong></td>
+                        <td><strong>Response</strong></td>
+                        <td><strong>Response Date</strong></td>
+                        <td><strong>SME</strong></td>
+                        <td><strong>Status</strong></td>
+                    </tr>                   
+
+                    <!--Display results from stored procedure-->
                     <?php
                     if(mysqli_num_rows($result)>0)
                     {
-                    while($row=mysqli_fetch_array($result)){
-                    $q_id=$row["q_id"];
-                    $examiner_name=$row["examiner_name"];
-                    $claim_no=$row["claim_no"];
-                    $clm_recvd_date=$row["clm_recvd_date"];
-                    $question_txt=$row["question_txt"];
-                    $q_date=$row["q_date"];
-                    $response=$row["response"];
-                    $resp_date=$row["resp_date"];
-                    $sme_name=$row["sme_name"];
-                    $status=$row["status"];
-                    echo "
-                    <tr>
-                        <td>$examiner_name</td>
-                        <td>$claim_no</td>
-                        <td>$clm_recvd_date</td>
-                        <td>$question_txt</td>
-                        <td>$q_date</td>
-                        <td>$response</td>
-                        <td>$resp_date</td>
-                        <td>$sme_name</td>
-                        <td>$status</td>
-                    </tr>
-                    " ;
-                    }
-
+                        while($row=mysqli_fetch_array($result))
+                        {
+                                $q_id=$row["q_id"];
+                                $examiner_name=$row["examiner_name"];
+                                $claim_no=$row["claim_no"];
+                                $clm_recvd_date=$row["clm_recvd_date"];
+                                $question_txt=$row["question_txt"];
+                                $q_date=$row["q_date"];
+                                $response=$row["response"];
+                                $resp_date=$row["resp_date"];
+                                $sme_name=$row["sme_name"];
+                                $status=$row["status"];
+                            echo "
+                            <tr>
+                                <td>$examiner_name</td>
+                                <td>$claim_no</td>
+                                <td>$clm_recvd_date</td>
+                                <td>$question_txt</td>
+                                <td>$q_date</td>
+                                <td>$response</td>
+                                <td>$resp_date</td>
+                                <td>$sme_name</td>
+                                <td>$status</td>
+                            </tr>
+                            " ;
+                        }
                     }
                     else
-                    {echo("No entries to display");}
+                        {
+                        echo("No entries to display");
+                        }
                     mysqli_close($link);
                     ?>
                 </table>

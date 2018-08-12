@@ -9,11 +9,23 @@
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="addquestion.php">Optum Question Log</a>
+                <a class="navbar-brand" href="default.php">Optum Question Log</a>
             </div>
             <ul class="nav navbar-nav">
-                <li class="active"><a href="Default.html">Home</a></li>
-                <li><a href="admin.html">SME Log In</a></li>
+                <li><a href="default.php">Home</a></li>
+                <li><a href="addquestion.php">Submit Question</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="adminlogin.php">
+                        SME Area
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="adminlogin.php">Log In</a></li>
+                        <li class="active"><a href="managequestions.php">Manage Questions</a></li>
+                        <li><a href="displayreports.php?fromDate=1900-01-01&toDate=2099-01-01">Display Reports</a></li>
+                    </ul>
+                </li>
+                <li><a href="contactus.php">Contact Us</a></li>
                 <li><a href="about.html">About</a></li>
             </ul>
         </div>
@@ -81,7 +93,7 @@
                                     Examiner Name:
                                 </div>
                                 <div class="col-md-3">
-                                    <input name="examiner_name" type="text" value="<?php echo $examiner_name ;?>" />
+                                    <input name="examiner_name" type="text" class="form-control" value="<?php echo $examiner_name ;?>" />
                                 </div>
 
                                 <!-- Padding -->
@@ -92,7 +104,7 @@
                                     Email Address:
                                 </div>
                                 <div class="col-md-3">
-                                    <input name="email" type="email" value="<?php echo $email ;?>" />
+                                    <input name="email" type="email" class="form-control" value="<?php echo $email ;?>" />
                                 </div>
                             </div>
 
@@ -106,7 +118,7 @@
                                     Claim Number:
                                 </div>
                                 <div class="col-md-3">
-                                    <input name="claim_no" type="text" value="<?php echo $claim_no ;?>" />
+                                    <input name="claim_no" type="text" class="form-control" value="<?php echo $claim_no ;?>" />
                                 </div>
 
                                 <!-- Padding -->
@@ -117,7 +129,7 @@
                                     Received Date
                                 </div>
                                 <div class="col-md-3">
-                                    <input name="clm_recvd_date" type="text" value="<?php echo $clm_recvd_date ;?>" />
+                                    <input name="clm_recvd_date" type="text" class="form-control" value="<?php echo $clm_recvd_date ;?>" />
                                 </div>
                             </div>
 
@@ -131,7 +143,7 @@
                                     Question Date:
                                 </div>
                                 <div class="col-md-3">
-                                    <input name="q_date" type="text" value="<?php echo $q_date ;?>" />
+                                    <input name="q_date" type="text" class="form-control" value="<?php echo $q_date ;?>" />
                                 </div>
 
                                 <!-- Padding -->
@@ -143,7 +155,7 @@
                                 </div>
                                 <div class="col-md-3">
 
-                                    <select name="cat_name" class="chosen-select" style="width: 160px;">
+                                    <select name="cat_name" class="form-control">
                                         <?php
                                             WHILE($row3=mysqli_fetch_array($result3))
                                             {
@@ -168,7 +180,7 @@
                                     Question
                                 </div>
                                 <div class="col-md-3">
-                                    <textarea name="question" rows="8" cols="35"> <?php echo $question ;?></textarea>
+                                    <textarea name="question" rows="8" class="form-control"> <?php echo $question ;?></textarea>
                                 </div>
 
                                 <!-- Padding -->
@@ -179,7 +191,7 @@
                                     Response:
                                 </div>
                                 <div class="col-md-3">
-                                    <textarea name="response" rows="8" cols="35"> <?php echo $response ;?></textarea>
+                                    <textarea name="response" rows="8" class="form-control"> <?php echo $response ;?></textarea>
                                 </div>
                             </div>
 
@@ -193,7 +205,7 @@
                                     Response Date:
                                 </div>
                                 <div class="col-md-3">
-                                    <input name="resp_date" type="text" value="<?php echo $resp_date ;?>" />
+                                    <input name="resp_date" type="text" class="form-control" value="<?php echo $resp_date ;?>" />
                                 </div>
 
                                 <!-- Padding -->
@@ -204,7 +216,7 @@
                                     SME:
                                 </div>
                                 <div class="col-md-3">
-                                    <select name="sme_name" class="chosen-select" style="width: 160px;">
+                                    <select name="sme_name" class="form-control">
                                         <?php
                                             WHILE($row2=mysqli_fetch_array($result2))
                                             {
@@ -230,22 +242,23 @@
                                     Status:
                                 </div>
                                 <div class="col-md-3">
-                                    <select name="status" class="chosen-select" style="width: 100px;">
+                                    <select name="status" class="form-control">
                                         <option>Pending</option>
                                         <option>Assigned</option>
                                         <option>Answered</option>
                                     </select>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div id="submitQ" dx-button="btnSubmit">
-                                    <input type="submit" name="submit" value="Update" />
-                                </div>
-                            </div>
-                        </div>
+                        </div>                        
                     </form>
+                </div>
+                
+            </div>
+            <div class="col-md-3">
+                <div id="submitQ" dx-button="btnSubmit">
+                    <br />
+                    <input type="submit" name="submit" value="Update" class="btn btn-primary btn-lg"  />
+                    <button class="btn btn-primary btn-lg" onclick="goBack()">Back</button>
                 </div>
             </div>
         </div>
@@ -278,6 +291,11 @@
     }
     for (var selector in config) {
         $(selector).chosen(config[selector]);
+    }
+</script>
+<script>
+    function goBack() {
+        window.history.back();
     }
 </script>
 
