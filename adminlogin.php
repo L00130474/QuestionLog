@@ -102,7 +102,6 @@
 </body>
 </html>
 <script src="Scripts/bootstrap.js"></script>
-<script src="Styles/DatePicker/js/bootstrap-datepicker.min.js"></script>
 <link href="Styles/bootstrap/bootstrap.css" rel="stylesheet" />
 <link href="Styles/bootstrap/bootstrap-theme.min.css" rel="stylesheet" />
 <link href="Styles/DatePicker/css/bootstrap-datepicker.min.css" rel="stylesheet" />

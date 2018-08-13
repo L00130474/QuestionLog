@@ -33,7 +33,7 @@
 
     <div id="main" class="container theme-showcase" role="main">        
         <div class="panel panel-primary">
-            <!-- Default panel contents -->
+            <!-- Panel contents -->
             <div class="panel-heading">Confirm Delete Property</div>
             <div class="panel-body">
                 <?php
@@ -45,8 +45,9 @@
                 $q_id=$_GET['q_id'];
 
                 $sql="SELECT * from question WHERE q_id = $q_id";
-                $result=mysqli_query($link,$sql);
-                
+                $result=mysqli_query($link,$sql);                
+
+                /*Create Summary Table*/
                 echo "<table>
                     ";
                     echo "
@@ -63,25 +64,26 @@
                     $clm_recvd_date=$row["clm_recvd_date"];
                     $question_txt=$row["question_txt"];
                     echo"
-                    <tr>                        
+                    <tr>                          
+                        <!--Populate table columns-->                  
                         <td>$examiner_name</td>                        
                         <td>$claim_no</td>
                         <td>$clm_recvd_date</td>
                         <td>$question_txt</td>
-                    </tr>";
-                    
+                    </tr>";                    
                     echo"
                 </table>";
+
+                /*Confirm Deletion*/
                 echo "Do you want to permanently delete this question?                
                 <p>
                     <a href='deletequestion.php?q_id=$q_id'>Delete</a>
                     <a href='managequestions.php'>Cancel</a>";
                     mysqli_close($link);
                     ?>
-</div>
+            </div>
         </div>
     </div>
-
 </body>
 </html>
 <script src="Scripts/bootstrap.js"></script>
