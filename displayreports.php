@@ -92,12 +92,11 @@
                     $sql="CALL spClosedReport('$fromDate', '$toDate')";
 
                     $result=mysqli_query($link,$sql);
+                ?>
 
-                    if(mysqli_num_rows($result)>0)
-                    {
-                    echo "<table>
-                        ";
-                        echo "
+                    
+                   <table id="closedReportTbl" class="table table-striped table-bordered" style="width:100%">
+                        
                         <!--Table Headings-->
                         <tr>
                             <td><strong>Status</strong></td>
@@ -105,31 +104,34 @@
                             <td><strong>Max. Tat (Days)</strong></td>
                             <td><strong>Avg. Lag to Received Date (Days)</strong></td>
                             <td><strong>Avg. Tat (Days)</strong></td>
-                        </tr>";
-                        /*Handle Nulls*/
-                        while($row=mysqli_fetch_array($result)){
-                        $status=$row["status"];
-                        $volume=$row["volume"];
-                              if ($volume == '')
-                              $volume = '0';
-                        $max_tat=$row["max_tat"];
-                              if ($max_tat == '')
-                              $max_tat = 'N/A';
-                        $avg_lag=$row["avg_lag"];
-                              if ($avg_lag == '')
-                              $avg_lag = 'N/A';
-                        $avg_tat=$row["avg_tat"];
-                              if ($avg_tat == '')
-                              $avg_tat = 'N/A';
-                        echo"
-                        <!--Populate Columns-->
-                        <tr>
-                            <td>$status</td>
-                            <td>$volume</td>
-                            <td>$max_tat</td>
-                            <td>$avg_lag</td>
-                            <td>$avg_tat</td>
-                        </tr>";
+                        </tr>
+                        <!--Display Rows and Handle Nulls-->
+                <?php
+                        if(mysqli_num_rows($result)>0)
+                        {
+                            while($row=mysqli_fetch_array($result)){
+                            $status=$row["status"];
+                            $volume=$row["volume"];
+                                  if ($volume == '')
+                                  $volume = '0';
+                            $max_tat=$row["max_tat"];
+                                  if ($max_tat == '')
+                                  $max_tat = 'N/A';
+                            $avg_lag=$row["avg_lag"];
+                                  if ($avg_lag == '')
+                                  $avg_lag = 'N/A';
+                            $avg_tat=$row["avg_tat"];
+                                  if ($avg_tat == '')
+                                  $avg_tat = 'N/A';
+                            echo"
+                            <!--Populate Columns-->
+                            <tr>
+                                <td>$status</td>
+                                <td>$volume</td>
+                                <td>$max_tat</td>
+                                <td>$avg_lag</td>
+                                <td>$avg_tat</td>
+                            </tr>";
                         }
                         echo"
                     </table>";
@@ -160,33 +162,34 @@
                 $sql="CALL spOpenReport";
 
                 $result=mysqli_query($link,$sql);
+                ?>
 
-                if(mysqli_num_rows($result)>0)
-                {
-                echo "<table>
-                    ";
-                    echo "
+                <table id="openReportTbl" class="table table-striped table-bordered" style="width:100%">
+                  
                     <tr>
                         <td><strong>Status</strong></td>
                         <td><strong>Question Volume</strong></td>
                         <td><strong>Max. Age Of Claim (Days)</strong></td>
                         <td><strong>Avg. Age Of Claim (Days)</strong></td>
                         <td><strong>Avg. Age of Question (Days)</strong></td>
-                    </tr>";
+                    </tr>
+                <?php
+                    if(mysqli_num_rows($result)>0)
+                    {
                     while($row=mysqli_fetch_array($result)){
                     $status=$row["status"];
                     $volume=$row["volume"];
-                          if ($volume == '')
-                          $volume = '0';
+                    if ($volume == '')
+                    $volume = '0';
                     $max_lag=$row["max_lag"];
-                          if ($max_lag == '')
-                          $max_lag = 'N/A';
+                    if ($max_lag == '')
+                    $max_lag = 'N/A';
                     $avg_lag=$row["avg_lag"];
-                          if ($avg_lag == '')
-                          $avg_lag = 'N/A';
+                    if ($avg_lag == '')
+                    $avg_lag = 'N/A';
                     $avg_tat=$row["avg_tat"];
-                          if ($avg_tat == '')
-                          $avg_tat = 'N/A';
+                    if ($avg_tat == '')
+                    $avg_tat = 'N/A';
                     echo"
                     <tr>
                         <td>$status</td>
@@ -222,35 +225,35 @@
                 $sql="CALL spRegionalReport('$fromDate', '$toDate')";
 
                 $result=mysqli_query($link,$sql);
+                ?>
 
-                if(mysqli_num_rows($result)>0)
-                {
-                echo "<table>
-                    ";
-                    echo "
+                <table id="regionalReportTbl" class="table table-striped table-bordered" style="width:100%">
                     <tr>
                         <td><strong>Region</strong></td>
                         <td><strong>Question Volume</strong></td>
                         <td><strong>Min. Tat (Days)</strong></td>
                         <td><strong>Max. Tat (Days)</strong></td>
                         <td><strong>Avg. Tat (Days)</strong></td>
-                    </tr>";
+                    </tr>
+                    <?php
+                    if(mysqli_num_rows($result)>0)
+                    {
                     while($row=mysqli_fetch_array($result)){
                     $regn_name=$row["regn_name"];
-                          if ($regn_name == '')
-                          $regn_name = 'Unassigned';
+                    if ($regn_name == '')
+                    $regn_name = 'Unassigned';
                     $volume=$row["volume"];
-                          if ($volume == '')
-                          $volume = '0';
+                    if ($volume == '')
+                    $volume = '0';
                     $min_tat=$row["min_tat"];
-                          if ($min_tat == '')
-                          $min_tat = 'N/A';
+                    if ($min_tat == '')
+                    $min_tat = 'N/A';
                     $max_tat=$row["max_tat"];
-                          if ($max_tat == '')
-                          $max_tat = 'N/A';
+                    if ($max_tat == '')
+                    $max_tat = 'N/A';
                     $avg_tat=$row["avg_tat"];
-                          if ($avg_tat == '')
-                          $avg_tat = 'N/A';
+                    if ($avg_tat == '')
+                    $avg_tat = 'N/A';
                     echo"
                     <tr>
                         <td>$regn_name</td>
@@ -286,36 +289,37 @@
                 $sql="CALL spSupervisorReport('$fromDate', '$toDate')";
 
                 $result=mysqli_query($link,$sql);
+                ?>
 
-                if(mysqli_num_rows($result)>0)
-                {
-                echo "<table>
-                    ";
-                    echo "
+                
+                <table id="supervisorReportTbl" class="table table-striped table-bordered" style="width:100%">
                     <tr>
                         <td><strong>Supervisor</strong></td>
                         <td><strong>Question Volume</strong></td>
                         <td><strong>Min. Tat (Days)</strong></td>
                         <td><strong>Max. Tat (Days)</strong></td>
                         <td><strong>Avg. Tat (Days)</strong></td>
-                    </tr>";
+                    </tr>
+                    <?php
+                    if(mysqli_num_rows($result)>0)
+                    {
                     while($row=mysqli_fetch_array($result)){
                     $sup_name=$row["sup_name"];
-                        if ($sup_name == '')
-                        $sup_name = 'Unassigned';
-                   $volume=$row["volume"];
-                          if ($volume == '')
-                          $volume = '0';
+                    if ($sup_name == '')
+                    $sup_name = 'Unassigned';
+                    $volume=$row["volume"];
+                    if ($volume == '')
+                    $volume = '0';
                     $min_tat=$row["min_tat"];
-                          if ($min_tat == '')
-                          $min_tat = 'N/A';
+                    if ($min_tat == '')
+                    $min_tat = 'N/A';
                     $max_tat=$row["max_tat"];
-                          if ($max_tat == '')
-                          $max_tat = 'N/A';
+                    if ($max_tat == '')
+                    $max_tat = 'N/A';
                     $avg_tat=$row["avg_tat"];
-                          if ($avg_tat == '')
-                          $avg_tat = 'N/A';
-                
+                    if ($avg_tat == '')
+                    $avg_tat = 'N/A';
+
                     echo"
                     <tr>
                         <td>$sup_name</td>

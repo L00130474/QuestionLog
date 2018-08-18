@@ -60,8 +60,7 @@
                 $sql="CALL spDisplayApprovedQs";
                 $result=mysqli_query($link,$sql);
                 ?>
-
-                
+                                
                 <table id="questiontbl" class="table table-striped table-bordered" style="width:100%">
                     <thead>
                         <tr>
