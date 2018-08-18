@@ -24,7 +24,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="adminlogin.php">Log In</a></li>
                         <li><a href="managequestions.php">Manage Questions</a></li>
-                        <li><a href="displayreports.php?fromDate=2000-01-01&toDate=2099-01-01">Display Reports</a></li>
+                        <li><a href="displayreports.php">Display Reports</a></li>
                     </ul>
                 </li>
                 <li><a href="contactus.php">Contact Us</a></li>
@@ -70,18 +70,12 @@
             </div>
         </div>
 
-
-
-
-
-
-
-
-
         <div class="panel panel-primary">
             <!-- Default panel contents -->
             <div class="panel-heading">Closed Summary</div>
             <div class="panel-body">
+
+                <!--Closed Questions Report-->
                 <?php
                 $server="localhost";
                 $dbuser="root";
@@ -89,54 +83,65 @@
 
                 $link=mysqli_connect($server,$dbuser,$password);
                 mysqli_select_db($link, "question_log");
-                $fromDate=$_GET["fromDate"];
-                $toDate=$_GET["toDate"];
-
-                $sql="CALL spClosedReport('$fromDate', '$toDate')";
-
-                $result=mysqli_query($link,$sql);
-
-                if(mysqli_num_rows($result)>0)
+                
+                if (isset($_GET["fromDate"])) 
                 {
-                echo "<table>
-                    ";
-                    echo "
-                    <tr>
-                        <td><strong>Status</strong></td>
-                        <td><strong>Question Volume</strong></td>
-                        <td><strong>Max. Tat (Days)</strong></td>
-                        <td><strong>Avg. Lag to Received Date (Days)</strong></td>
-                        <td><strong>Avg. Tat (Days)</strong></td>
-                    </tr>";
-                    while($row=mysqli_fetch_array($result)){
-                    $status=$row["status"];
-                    $volume=$row["volume"];
-                          if ($volume == '')
-                          $volume = '0';
-                    $max_tat=$row["max_tat"];
-                          if ($max_tat == '')
-                          $max_tat = 'N/A';
-                    $avg_lag=$row["avg_lag"];
-                          if ($avg_lag == '')
-                          $avg_lag = 'N/A';
-                    $avg_tat=$row["avg_tat"];
-                          if ($avg_tat == '')
-                          $avg_tat = 'N/A';
-                    echo"
-                    <tr>
-                        <td>$status</td>
-                        <td>$volume</td>
-                        <td>$max_tat</td>
-                        <td>$avg_lag</td>
-                        <td>$avg_tat</td>
-                    </tr>";
+                    $fromDate=$_GET["fromDate"];
+                    $toDate=$_GET["toDate"];
+
+                    $sql="CALL spClosedReport('$fromDate', '$toDate')";
+
+                    $result=mysqli_query($link,$sql);
+
+                    if(mysqli_num_rows($result)>0)
+                    {
+                    echo "<table>
+                        ";
+                        echo "
+                        <!--Table Headings-->
+                        <tr>
+                            <td><strong>Status</strong></td>
+                            <td><strong>Question Volume</strong></td>
+                            <td><strong>Max. Tat (Days)</strong></td>
+                            <td><strong>Avg. Lag to Received Date (Days)</strong></td>
+                            <td><strong>Avg. Tat (Days)</strong></td>
+                        </tr>";
+                        /*Handle Nulls*/
+                        while($row=mysqli_fetch_array($result)){
+                        $status=$row["status"];
+                        $volume=$row["volume"];
+                              if ($volume == '')
+                              $volume = '0';
+                        $max_tat=$row["max_tat"];
+                              if ($max_tat == '')
+                              $max_tat = 'N/A';
+                        $avg_lag=$row["avg_lag"];
+                              if ($avg_lag == '')
+                              $avg_lag = 'N/A';
+                        $avg_tat=$row["avg_tat"];
+                              if ($avg_tat == '')
+                              $avg_tat = 'N/A';
+                        echo"
+                        <!--Populate Columns-->
+                        <tr>
+                            <td>$status</td>
+                            <td>$volume</td>
+                            <td>$max_tat</td>
+                            <td>$avg_lag</td>
+                            <td>$avg_tat</td>
+                        </tr>";
+                        }
+                        echo"
+                    </table>";
                     }
-                    echo"
-                </table>";
+                    else
+                    {echo("No entries to display");}
+                    mysqli_close($link);
                 }
                 else
-                {echo("No entries to display");}
-                mysqli_close($link);
+                {
+                    echo "<h1>Enter dates</h1>";
+                }
                 ?>
             </div>
         </div>
@@ -333,20 +338,22 @@
 
 </body>
 </html>
-<script src="Scripts/bootstrap.js"></script>
+<!-- Styles -->
 <link href="Styles/bootstrap/bootstrap.css" rel="stylesheet" />
 <link href="Styles/bootstrap/bootstrap-theme.min.css" rel="stylesheet" />
 <link href="Styles/DatePicker/css/bootstrap-datepicker.min.css" rel="stylesheet" />
+
+<!-- Scripts -->
+<script src="Scripts/bootstrap.js"></script>
 <script src="Styles/DatePicker/js/bootstrap-datepicker.js"></script>
+
 <script>
     $('.input-daterange').datepicker({
         format: 'yyyy-mm-dd',
         todayBtn: "linked",
         clearBtn: true
     });
-</script>
 
-<script>
     $(document).ready(function () {
         $("#btnSubmitDates").click(function () {
             var fromDate = $('#fromDate').val();
@@ -356,6 +363,3 @@
         });
     });
 </script>
-
-
-<!--https://getbootstrap.com/docs/3.3/components/-->

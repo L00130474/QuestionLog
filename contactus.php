@@ -22,7 +22,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="adminlogin.php">Log In</a></li>
                         <li><a href="managequestions.php">Manage Questions</a></li>
-                        <li><a href="displayreports.php?fromDate=1900-01-01&toDate=2099-01-01">Display Reports</a></li>
+                        <li><a href="displayreports.php">Display Reports</a></li>
                     </ul>
                 </li>
                 <li class="active"><a href="contactus.php">Contact Us</a></li>
@@ -38,7 +38,7 @@
             <div class="panel-body">
 
                 <div id="form">
-                    <form method="post" action="confirmemail.php">
+                    <form method="post" action="confirmemail.php" id="contactForm">
                         <div class="panel-body">
 
                             <!-- First Name -->
@@ -83,7 +83,7 @@
                                 </div>
                                 <div class="col-md-3 input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                    <input name="email" type="email" class="form-control" required="required" placeholder="Email Address" />
+                                    <input name="email" id="email" type="email" class="form-control" required="required" placeholder="Email Address" />
                                 </div>
 
                             </div>
@@ -103,7 +103,6 @@
                                     <textarea class="form-control" name="comment" rows="4" placeholder="Comments" required="required"></textarea>
                                 </div>
                             </div>
-
                         </div>
                         <div id="submitQ" dx-button="btnSubmit">
                             <input type="submit" name="submit" value="Send Message" class="btn btn-primary btn-lg" />
@@ -112,42 +111,41 @@
                 </div>
             </div>
         </div>
+
     </div>
 
 </body>
 </html>
-<script src="Scripts/bootstrap.js"></script>
+<!-- Styles -->
 <link href="Styles/bootstrap/bootstrap.css" rel="stylesheet" />
 <link href="Styles/bootstrap/bootstrap-theme.min.css" rel="stylesheet" />
-<link href="Styles/DatePicker/css/bootstrap-datepicker.min.css" rel="stylesheet" />
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link href="Styles/ZebraDialog/zebra_dialog.css" rel="stylesheet" />
 
-<!--Date Time Picker-->
-<script src="Styles/DatePicker/js/bootstrap-datepicker.js"></script>
+<!-- Scripts -->
+<script src="Scripts/bootstrap.js"></script>
+<script src="Scripts/zebra_dialog.src.js"></script>
+
 <script>
-    $('.input-daterange').datepicker({
-        format: 'yyyy-mm-dd',
-        todayBtn: "linked",
-        clearBtn: true
+    //Zebra Dialog runs when form submitted below line 
+    $(document).ready(function () {
+        $("#contactForm").submit(function (e) {            
+            //prevent the form from posting as email server not set up
+            e.preventDefault();
+            //Pickup email address from form
+            var emailAddress = $('#email').val();
+            //Create Zebra pop up with various options
+            new $.Zebra_Dialog(
+                'Email received from ' + emailAddress + ', we will respond within 2 working days.',
+                {
+                    buttons: false,
+                    modal: true,
+                    auto_close: 5000,
+                    onClose: function (caption) {
+                        window.location.reload(false);
+                    }
+                }
+            );
+        });
     });
-</script>
-<script type="text/javascript">
-    var config = {
-        '.chosen-select': {},
-        '.chosen-select-deselect': { allow_single_deselect: true },
-        '.chosen-select-no-single': { disable_search_threshold: 15 },
-        '.chosen-select-no-results': { no_results_text: 'No Matches' },
-        '.chosen-select-width': { width: "95%" }
-    }
-    for (var selector in config) {
-        $(selector).chosen(config[selector]);
-    }
-</script>
 
-
-<!--https://getbootstrap.com/docs/3.3/components/-->
-<!--https://bootsnipp.com/snippets/featured/advanced-dropdown-search-->
-<!--https://stackoverflow.com/questions/20769285/set-date-picker-to-a-given-date-->
-<!--$.datepicker.setDefaults({
-    dateFormat: 'dd.mm.yy'
-});-->
+</script>

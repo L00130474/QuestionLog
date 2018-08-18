@@ -22,7 +22,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="adminlogin.php">Log In</a></li>
                         <li><a href="managequestions.php">Manage Questions</a></li>
-                        <li><a href="displayreports.php?fromDate=1900-01-01&toDate=2099-01-01">Display Reports</a></li>
+                        <li><a href="displayreports.php">Display Reports</a></li>
                     </ul>
                 </li>
                 <li><a href="contactus.php">Contact Us</a></li>
@@ -89,8 +89,8 @@
                         <td>$sme_name</td>
                         <td>$cat_name</td>
                         <td>$status</td> 
-                        <td><a href='editquestion.php?q_id=$q_id'>Respond</a></td>
-                        <td><a href='confirmdeletequestion.php?q_id=$q_id'>Delete</a></td>
+                        <td><a href='editquestion.php?q_id=$q_id' class='btn btn-info btn-sm'> Respond</a></td>
+                        <td><a href='confirmdeletequestion.php?q_id=$q_id' class='btn btn-danger btn-sm'>Delete</a></td>
                     </tr>
                     " ;
                     }
@@ -106,16 +106,18 @@
     </div>
 </body>
 </html>
-<script src="Scripts/bootstrap.js"></script>
+
+<!-- Styles -->
 <link href="Styles/bootstrap/bootstrap.css" rel="stylesheet" />
 <link href="Styles/bootstrap/bootstrap-theme.min.css" rel="stylesheet" />
 <link href="Styles/DatePicker/css/bootstrap-datepicker.min.css" rel="stylesheet" />
-<script src="Styles/DatePicker/js/bootstrap-datepicker.js"></script>
+<link href="Styles/bootstrap/datatables.bootstrap.css" rel="stylesheet" />
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
+<!-- Scripts -->
+<script src="Scripts/bootstrap.js"></script>
+<script src="Styles/DatePicker/js/bootstrap-datepicker.js"></script>
+<script src="Scripts/jquery.dataTables.js"></script>
+<script src="Scripts/dataTables.bootstrap.js"></script>
 
 <script>
     $(document).ready(function () {
@@ -123,8 +125,6 @@
             "order": [[6, "desc"]]
         });
     });
-</script>
-<script>
     function goBack() {
         window.history.back();
     }

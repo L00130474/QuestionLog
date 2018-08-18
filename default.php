@@ -24,7 +24,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="adminlogin.php">Log In</a></li>
                         <li><a href="managequestions.php">Manage Questions</a></li>
-                        <li><a href="displayreports.php?fromDate=1900-01-01&toDate=2099-01-01">Display Reports</a></li>
+                        <li><a href="displayreports.php">Display Reports</a></li>
                     </ul>
                 </li>
                 <li><a href="contactus.php">Contact Us</a></li>
@@ -61,21 +61,22 @@
                 $result=mysqli_query($link,$sql);
                 ?>
 
-                <!--DataTable Headings-->
+                
                 <table id="questiontbl" class="table table-striped table-bordered" style="width:100%">
-                    <tr>
-                        <td><strong>Examiner</strong></td>
-                        <td><strong>Claim Number</strong></td>
-                        <td><strong>Received Date</strong></td>
-                        <td><strong>Question</strong></td>
-                        <td><strong>Question Date</strong></td>
-                        <td><strong>Response</strong></td>
-                        <td><strong>Response Date</strong></td>
-                        <td><strong>SME</strong></td>
-                        <td><strong>Status</strong></td>
-                    </tr>                   
-
-                    <!--Display results from stored procedure-->
+                    <thead>
+                        <tr>
+                            <td><strong>Examiner</strong></td>
+                            <td><strong>Claim Number</strong></td>
+                            <td><strong>Received Date</strong></td>
+                            <td><strong>Question</strong></td>
+                            <td><strong>Question Date</strong></td>
+                            <td><strong>Response</strong></td>
+                            <td><strong>Response Date</strong></td>
+                            <td><strong>SME</strong></td>
+                            <td><strong>Status</strong></td>
+                        </tr>
+                    </thead> 
+                   
                     <?php
                     if(mysqli_num_rows($result)>0)
                     {
@@ -92,17 +93,17 @@
                                 $sme_name=$row["sme_name"];
                                 $status=$row["status"];
                             echo "
-                            <tr>
-                                <td>$examiner_name</td>
-                                <td>$claim_no</td>
-                                <td>$clm_recvd_date</td>
-                                <td>$question_txt</td>
-                                <td>$q_date</td>
-                                <td>$response</td>
-                                <td>$resp_date</td>
-                                <td>$sme_name</td>
-                                <td>$status</td>
-                            </tr>
+                        <tr>
+                            <td>$examiner_name</td>
+                            <td>$claim_no</td>
+                            <td>$clm_recvd_date</td>
+                            <td>$question_txt</td>
+                            <td>$q_date</td>
+                            <td>$response</td>
+                            <td>$resp_date</td>
+                            <td>$sme_name</td>
+                            <td>$status</td>
+                        </tr>
                             " ;
                         }
                     }
@@ -118,16 +119,16 @@
     </div>
 </body>
 </html>
-<script src="Scripts/bootstrap.js"></script>
+
+<!-- Styles -->
 <link href="Styles/bootstrap/bootstrap.css" rel="stylesheet" />
 <link href="Styles/bootstrap/bootstrap-theme.min.css" rel="stylesheet" />
-<link href="Styles/DatePicker/css/bootstrap-datepicker.min.css" rel="stylesheet" />
-<script src="Styles/DatePicker/js/bootstrap-datepicker.js"></script>
+<link href="Styles/bootstrap/datatables.bootstrap.css" rel="stylesheet" />
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
+<!-- Scripts -->
+<script src="Scripts/bootstrap.js"></script>
+<script src="Scripts/jquery.dataTables.js"></script>
+<script src="Scripts/dataTables.bootstrap.js"></script>
 
 <script>
     $(document).ready(function () {
