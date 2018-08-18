@@ -35,6 +35,67 @@
 
     <div id="main" class="container theme-showcase" role="main">
         <div class="panel panel-primary">
+            <!-- Default panel contents -->
+            <div class="panel-heading">Open Summary. Note: Date Filters not applied</div>
+            <div class="panel-body">
+                <?php
+                $server="localhost";
+                $dbuser="root";
+                $password="";
+
+                $link=mysqli_connect($server,$dbuser,$password);
+                mysqli_select_db($link, "question_log");
+
+                $sql="CALL spOpenReport";
+
+                $result=mysqli_query($link,$sql);
+                ?>
+
+                <table id="openReportTbl" class="table table-striped table-bordered" style="width:100%">
+
+                    <tr>
+                        <td><strong>Status</strong></td>
+                        <td><strong>Question Volume</strong></td>
+                        <td><strong>Max. Age Of Claim (Days)</strong></td>
+                        <td><strong>Avg. Age Of Claim (Days)</strong></td>
+                        <td><strong>Avg. Age of Question (Days)</strong></td>
+                    </tr>
+                    <?php
+                    if(mysqli_num_rows($result)>0)
+                    {
+                    while($row=mysqli_fetch_array($result)){
+                    $status=$row["status"];
+                    $volume=$row["volume"];
+                    if ($volume == '')
+                    $volume = '0';
+                    $max_lag=$row["max_lag"];
+                    if ($max_lag == '')
+                    $max_lag = 'N/A';
+                    $avg_lag=$row["avg_lag"];
+                    if ($avg_lag == '')
+                    $avg_lag = 'N/A';
+                    $avg_tat=$row["avg_tat"];
+                    if ($avg_tat == '')
+                    $avg_tat = 'N/A';
+                    echo"
+                    <tr>
+                        <td>$status</td>
+                        <td>$volume</td>
+                        <td>$max_lag</td>
+                        <td>$avg_lag</td>
+                        <td>$avg_tat</td>
+                    </tr>";
+                    }
+                    echo"
+                </table>";
+                }
+                else
+                {echo("No entries to display");}
+                mysqli_close($link);
+                ?>
+            </div>
+        </div>
+        <div class="panel panel-primary">
             <div class="panel-heading">
                 <h3 class="panel-title">Please select question dates</h3>
             </div>
@@ -147,67 +208,7 @@
                 ?>
             </div>
         </div>
-        <div class="panel panel-primary">
-            <!-- Default panel contents -->
-            <div class="panel-heading">Open Summary. Note: Date Filters not applied</div>
-            <div class="panel-body">
-                <?php
-                $server="localhost";
-                $dbuser="root";
-                $password="";
-
-                $link=mysqli_connect($server,$dbuser,$password);
-                mysqli_select_db($link, "question_log");
-
-                $sql="CALL spOpenReport";
-
-                $result=mysqli_query($link,$sql);
-                ?>
-
-                <table id="openReportTbl" class="table table-striped table-bordered" style="width:100%">
-                  
-                    <tr>
-                        <td><strong>Status</strong></td>
-                        <td><strong>Question Volume</strong></td>
-                        <td><strong>Max. Age Of Claim (Days)</strong></td>
-                        <td><strong>Avg. Age Of Claim (Days)</strong></td>
-                        <td><strong>Avg. Age of Question (Days)</strong></td>
-                    </tr>
-                <?php
-                    if(mysqli_num_rows($result)>0)
-                    {
-                    while($row=mysqli_fetch_array($result)){
-                    $status=$row["status"];
-                    $volume=$row["volume"];
-                    if ($volume == '')
-                    $volume = '0';
-                    $max_lag=$row["max_lag"];
-                    if ($max_lag == '')
-                    $max_lag = 'N/A';
-                    $avg_lag=$row["avg_lag"];
-                    if ($avg_lag == '')
-                    $avg_lag = 'N/A';
-                    $avg_tat=$row["avg_tat"];
-                    if ($avg_tat == '')
-                    $avg_tat = 'N/A';
-                    echo"
-                    <tr>
-                        <td>$status</td>
-                        <td>$volume</td>
-                        <td>$max_lag</td>
-                        <td>$avg_lag</td>
-                        <td>$avg_tat</td>
-                    </tr>";
-                    }
-                    echo"
-                </table>";
-                }
-                else
-                {echo("No entries to display");}
-                mysqli_close($link);
-                ?>
-            </div>
-        </div>
+        
         <div class="panel panel-primary">
             <!-- Default panel contents -->
             <div class="panel-heading">Regional Summary</div>
