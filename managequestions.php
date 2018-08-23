@@ -21,7 +21,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href="adminlogin.php">Log In</a></li>
-                        <li><a href="managequestions.php">Manage Questions</a></li>
+                        <li class="active"><a href="managequestions.php">Manage Questions</a></li>
                         <li><a href="displayreports.php">Display Reports</a></li>
                     </ul>
                 </li>

@@ -31,97 +31,102 @@
         </div>
     </nav>
 
-    <div id="main" class="container theme-showcase" role="main">
-        <div>
-            <!-- Default panel contents -->
-            <div id="form">
-                <form method="post" action="processaddquestion.php">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Please fill in details below (All details are required)</h3>
-                        </div>
-                        <div class="panel-body">
-                            <div class="row">
-                                <!-- Name -->
-                                <div class="col-md-2">
-                                    Examiner Name:
-                                </div>
-                                <div class="col-md-3">
-                                    <input name="examiner_name" type="text" class="form-control" required="required" placeholder="Enter Examiner Name" />
+    <!--<?php include("includes/nav.html");?>-->
+
+    <div id="container">
+        
+        <div id="main" class="container theme-showcase" role="main">
+            <div>
+                <!-- Default panel contents -->
+                <div id="form">
+                    <form method="post" action="processaddquestion.php">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Please fill in details below (All details are required)</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <!-- Name -->
+                                    <div class="col-md-2">
+                                        <strong>Name*</strong>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input name="examiner_name" type="text" class="form-control" required="required" placeholder="Enter Examiner Name" />
+                                    </div>
+
+                                    <!-- Padding -->
+                                    <div class="col-md-1">
+                                    </div>
+
+                                    <!-- Email Address -->
+                                    <div class="col-md-2">
+                                        <strong>Address*</strong>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input name="email" type="email" class="form-control" required="required" placeholder="Format: jbloggs@domain.ie" />
+                                    </div>
                                 </div>
 
                                 <!-- Padding -->
-                                <div class="col-md-1">
+                                <div class="row">
+                                    <br />
                                 </div>
 
-                                <!-- Email Address -->
-                                <div class="col-md-2">
-                                    Email Address:
-                                </div>
-                                <div class="col-md-3">
-                                    <input name="email" type="email" class="form-control" required="required" placeholder="Format: jbloggs@domain.ie" />
-                                </div>
-                            </div>
+                                <div class="row">
+                                    <!-- Claim Number -->
+                                    <div class="col-md-2">
+                                        <strong>Claim Number*</strong>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input name="claim_no" type="number" class="form-control" required="required" placeholder="Format: 12345678910" />
+                                    </div>
 
-                            <!-- Padding -->
-                            <div class="row">
-                                <br />
-                            </div>
+                                    <!-- Padding -->
+                                    <div class="col-md-1">
+                                    </div>
 
-                            <div class="row">
-                                <!-- Claim Number -->
-                                <div class="col-md-2">
-                                    Claim Number:
-                                </div>
-                                <div class="col-md-3">
-                                    <input name="claim_no" type="number" class="form-control" required="required" placeholder="Format: 12345678910" />
+                                    <!-- Received Date -->
+                                    <div class="col-md-2">
+                                        <strong>Received Date*</strong>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="input-daterange input-group" id="datepicker" data-provide="datepicker">
+                                            <span class="input-group-addon"><strong>Date</strong></span>
+                                            <input id="recdDate" type="text" required="required" class="input-sm form-control" name="clm_recvd_date" />
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <!-- Padding -->
-                                <div class="col-md-1">
+                                <div class="row">
+                                    <br />
                                 </div>
 
-                                <!-- Received Date -->
-                                <div class="col-md-2">
-                                    Claim Received Date:
-                                </div>
+                                <div class="row">
 
-                                <div class="col-md-3">                                    
-                                    <div class="input-daterange input-group" id="datepicker" data-provide="datepicker">
-                                        <span class="input-group-addon">Date</span>
-                                        <input id="recdDate" type="text" required="required" class="input-sm form-control" name="clm_recvd_date" />
+                                    <!-- Question -->
+                                    <div class="col-md-2">
+                                        <strong>Question*</strong>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <textarea name="question" class="form-control" rows="8" required="required" placeholder="Enter Your Question Here"></textarea>
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- Padding -->
-                            <div class="row">
-                                <br />
-                            </div>
-
-                            <div class="row">
-
-                                <!-- Question -->
-                                <div class="col-md-2">
-                                    Question:
-                                </div>
-                                <div class="col-md-3">
-                                    <textarea name="question" class="form-control" rows="8" required="required" placeholder="Enter Your Question Here"></textarea>
-                                </div>
-                            </div>
                         </div>
-                    </div>
 
-                    <div id="submitQ" dx-button="btnSubmit">
-                        <input type="submit" name="submit" value="Submit" class="btn btn-primary btn-lg" />
-                        <button class="btn btn-primary btn-lg" onclick="goBack()">Back</button>
-                    </div>
-                </form>
+                        <div id="submitQ" dx-button="btnSubmit">
+                            <input type="submit" name="submit" value="Submit" class="btn btn-primary btn-lg" />
+                            <button class="btn btn-primary btn-lg" onclick="goBack()">Back</button>
+                        </div>
+                    </form>
 
+                </div>
             </div>
         </div>
     </div>
-
+    <?php include("includes/footer.html");?>
 </body>
 </html>
 <!-- Styles -->

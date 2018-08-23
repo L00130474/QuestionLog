@@ -21,7 +21,7 @@ table.dataTable.nowrap td {
 }
 
 div.dataTables_wrapper div.dataTables_length label {
-  font-weight: normal;
+  font-weight: bold; /*jc*/
   text-align: left;
   white-space: nowrap;
 }
@@ -33,7 +33,7 @@ div.dataTables_wrapper div.dataTables_filter {
   text-align: right;
 }
 div.dataTables_wrapper div.dataTables_filter label {
-  font-weight: normal;
+  font-weight: bold;  /*jc*/
   white-space: nowrap;
   text-align: left;
 }

@@ -40,7 +40,7 @@
         <div class="jumbotron">
             <h1>Online Question Log</h1>
             <p>Browse questions by entering key word(s) in the search box below or submit a new question.</p>
-            <p><a class="btn btn-primary btn-lg" href="addquestion.php" role="button">Submit a Question</a></p>
+            <p><a class="btn btn-primary btn-lg" href="addquestion.php" role="button">Submit Question</a></p>
         </div>
 
         <div class="panel panel-primary">
@@ -116,6 +116,7 @@
             </div>
         </div>
     </div>
+    <?php include("includes/footer.html");?>
 </body>
 </html>
 
