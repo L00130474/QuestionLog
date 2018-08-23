@@ -5,12 +5,29 @@
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 html {
-  font-family: sans-serif;
+  font-family: arial,Arial, Helvetica, sans-serif;
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }
 body {
   margin: 0;
+}
+/*jc*/
+#footer{
+background-color:#30323D; 
+color:#E1ECF1;
+height:40px;
+padding-top:10px;
+}
+/*jc*/
+#copyright{
+    width:70%;
+    float:left;
+    padding-left:20px;
+}
+/*jc*/
+#contactus{
+    color:#E8C547;
 }
 article,
 aside,
@@ -1608,6 +1625,12 @@ pre code {
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+  background-color:#30323D; /*jc*/
+  color:#E1ECF1;
+}
+.container-fluid[href]:hover,
+.container-fluid[href]:focus {
+  background-color: #286090;
 }
 .row {
   margin-right: -15px;
@@ -4500,22 +4523,22 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   border-color: #e7e7e7;
 }
 .navbar-default .navbar-brand {
-  color: #777;
+  color: #E8C547; /*jc*/
 }
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
-  color: #5e5e5e;
+  color: #E1ECF1;/*jc*/
   background-color: transparent;
 }
 .navbar-default .navbar-text {
   color: #777;
 }
 .navbar-default .navbar-nav > li > a {
-  color: #777;
+  color: #E1ECF1;/*jc*/
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-  color: #333;
+  color: #E8C547;/*jc*/
   background-color: transparent;
 }
 .navbar-default .navbar-nav > .active > a,
@@ -4727,7 +4750,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   padding: 6px 12px;
   margin-left: -1px;
   line-height: 1.42857143;
-  color: #337ab7;
+  color: #0F3375; /*jc*/
   text-decoration: none;
   background-color: #fff;
   border: 1px solid #ddd;
@@ -4761,8 +4784,8 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   z-index: 3;
   color: #fff;
   cursor: default;
-  background-color: #337ab7;
-  border-color: #337ab7;
+  background-color: #0F3375; /*jc*/
+  border-color: #0F3375; /*jc*/
 }
 .pagination > .disabled > span,
 .pagination > .disabled > span:hover,
@@ -5704,22 +5727,22 @@ button.list-group-item-danger.active:focus {
   border-bottom-color: #ddd;
 }
 .panel-primary {
-  border-color: #337ab7;
+  border-color: #0F3375; /*jc*/
 }
 .panel-primary > .panel-heading {
-  color: #fff;
-  background-color: #337ab7;
-  border-color: #337ab7;
+  color: #E1ECF1;
+  background-color: #0F3375;
+  border-color: #0F3375;
 }
 .panel-primary > .panel-heading + .panel-collapse > .panel-body {
-  border-top-color: #337ab7;
+  border-top-color: #0F3375;
 }
 .panel-primary > .panel-heading .badge {
-  color: #337ab7;
-  background-color: #fff;
+  color: #E1ECF1;
+  background-color: #0F3375;
 }
 .panel-primary > .panel-footer + .panel-collapse > .panel-body {
-  border-bottom-color: #337ab7;
+  border-bottom-color: #0F3375;
 }
 .panel-success {
   border-color: #d6e9c6;

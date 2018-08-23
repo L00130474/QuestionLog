@@ -43,7 +43,6 @@
 
                             <!-- First Name -->
                             <div class="row">
-
                                 <div class="col-md-2">
                                     First Name:
                                 </div>
@@ -51,7 +50,6 @@
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                                     <input name="first_name" type="text" class="form-control" required="required" placeholder="First Name" />
                                 </div>
-
                             </div>
 
                             <!-- Padding -->
@@ -141,11 +139,11 @@
                     modal: true,
                     auto_close: 5000,
                     onClose: function (caption) {
+                        //reload page to clear form
                         window.location.reload(false);
                     }
                 }
             );
         });
     });
-
 </script>

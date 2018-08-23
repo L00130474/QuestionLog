@@ -22,7 +22,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="adminlogin.php">Log In</a></li>
                         <li><a href="managequestions.php">Manage Questions</a></li>
-                        <li><a href="displayreports.php?fromDate=1900-01-01&toDate=2099-01-01">Display Reports</a></li>
+                        <li><a href="displayreports.php">Display Reports</a></li>
                     </ul>
                 </li>
                 <li><a href="contactus.php">Contact Us</a></li>
@@ -85,24 +85,30 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Submit -->
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div id="submitQ" dx-button="btnSubmit">
-                                    <input type="submit" name="submit" value="Submit" />
-                                </div>
+                        <div class="col-md-3">
+                            <div id="submitQ" dx-button="btnSubmit">
+                                <br />
+                                <input type="submit" name="submit" value="Submit" class="btn btn-primary btn-lg" />
+                                <button class="btn btn-primary btn-lg" onclick="goBack()">Back</button>
                             </div>
                         </div>
-                    </form>
+                    </form>                    
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
 </body>
 </html>
-<script src="Scripts/bootstrap.js"></script>
+
+<!-- Styles -->
 <link href="Styles/bootstrap/bootstrap.css" rel="stylesheet" />
 <link href="Styles/bootstrap/bootstrap-theme.min.css" rel="stylesheet" />
-<link href="Styles/DatePicker/css/bootstrap-datepicker.min.css" rel="stylesheet" />
-<!--https://getbootstrap.com/docs/3.3/components/-->
+
+<!-- Scripts -->
+<script src="Scripts/bootstrap.js"></script>
+
+<script>   
+    function goBack() {
+        window.history.back();
+    }
+</script>

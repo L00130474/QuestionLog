@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title>Manage Questions</title>
+    <title>Confirm Delete</title>
     <script src="Scripts/jquery-3.1.0.min.js"></script>
     <meta charset="utf-8" />
 </head>
@@ -22,16 +22,16 @@
                     <ul class="dropdown-menu">
                         <li><a href="adminlogin.php">Log In</a></li>
                         <li><a href="managequestions.php">Manage Questions</a></li>
-                        <li><a href="displayreports.php?fromDate=1900-01-01&toDate=2099-01-01">Display Reports</a></li>
+                        <li><a href="displayreports.php">Display Reports</a></li>
                     </ul>
                 </li>
                 <li><a href="contactus.php">Contact Us</a></li>
                 <li><a href="about.html">About</a></li>
             </ul>
         </div>
-    </nav> 
+    </nav>
 
-    <div id="main" class="container theme-showcase" role="main">        
+    <div id="main" class="container theme-showcase" role="main">
         <div class="panel panel-primary">
             <!-- Panel contents -->
             <div class="panel-heading">Confirm Delete Property</div>
@@ -45,18 +45,19 @@
                 $q_id=$_GET['q_id'];
 
                 $sql="SELECT * from question WHERE q_id = $q_id";
-                $result=mysqli_query($link,$sql);                
+                $result=mysqli_query($link,$sql);
+                ?>
 
-                /*Create Summary Table*/
-                echo "<table>
-                    ";
-                    echo "
+                <table id="confirmDeletetbl" class="table table-striped table-bordered" style="width:100%">
+
                     <tr>
                         <td><strong>Examiner</strong></td>
                         <td><strong>Claim Number</strong></td>
                         <td><strong>Received Date</strong></td>
                         <td><strong>Question</strong></td>
-                    </tr>";
+                    </tr>
+
+                    <?php
                     $row=mysqli_fetch_array($result);
                     $q_id=$row["q_id"];
                     $examiner_name=$row["examiner_name"];
@@ -64,33 +65,31 @@
                     $clm_recvd_date=$row["clm_recvd_date"];
                     $question_txt=$row["question_txt"];
                     echo"
-                    <tr>                          
-                        <!--Populate table columns-->                  
-                        <td>$examiner_name</td>                        
+                    <tr>
+                        <!--Populate table columns-->
+                        <td>$examiner_name</td>
                         <td>$claim_no</td>
                         <td>$clm_recvd_date</td>
                         <td>$question_txt</td>
-                    </tr>";                    
+                    </tr>";
                     echo"
                 </table>";
-
-                /*Confirm Deletion*/
-                echo "Do you want to permanently delete this question?                
-                <p>
-                    <a href='deletequestion.php?q_id=$q_id'>Delete</a>
-                    <a href='managequestions.php'>Cancel</a>";
-                    mysqli_close($link);
-                    ?>
+                mysqli_close($link);
+                ?>
             </div>
+        </div>
+        <!-- Confirm Deletion -->
+        <div>
+            <h3>Do you want to permanently delete this question?</h3>
+            <p>
+                <br />
+                <a href='deletequestion.php?q_id=$q_id' class='btn btn-danger btn-lg'>Delete</a>
+                <a href='managequestions.php' class='btn btn-info btn-lg'>Cancel</a>
         </div>
     </div>
 </body>
 </html>
-<script src="Scripts/bootstrap.js"></script>
+
+<!-- Styles -->
 <link href="Styles/bootstrap/bootstrap.css" rel="stylesheet" />
 <link href="Styles/bootstrap/bootstrap-theme.min.css" rel="stylesheet" />
-<link href="Styles/DatePicker/css/bootstrap-datepicker.min.css" rel="stylesheet" />
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-
-<!--https://getbootstrap.com/docs/3.3/components/-->

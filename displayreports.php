@@ -144,71 +144,71 @@
 
                 $link=mysqli_connect($server,$dbuser,$password);
                 mysqli_select_db($link, "question_log");
-                
-                if (isset($_GET["fromDate"])) 
+
+                if (isset($_GET["fromDate"]))
                 {
-                    $fromDate=$_GET["fromDate"];
-                    $toDate=$_GET["toDate"];
+                $fromDate=$_GET["fromDate"];
+                $toDate=$_GET["toDate"];
 
-                    $sql="CALL spClosedReport('$fromDate', '$toDate')";
+                $sql="CALL spClosedReport('$fromDate', '$toDate')";
 
-                    $result=mysqli_query($link,$sql);
+                $result=mysqli_query($link,$sql);
                 ?>
 
-                    
-                   <table id="closedReportTbl" class="table table-striped table-bordered" style="width:100%">
-                        
-                        <!--Table Headings-->
-                        <tr>
-                            <td><strong>Status</strong></td>
-                            <td><strong>Question Volume</strong></td>
-                            <td><strong>Max. Tat (Days)</strong></td>
-                            <td><strong>Avg. Lag to Received Date (Days)</strong></td>
-                            <td><strong>Avg. Tat (Days)</strong></td>
-                        </tr>
-                        <!--Display Rows and Handle Nulls-->
-                <?php
-                        if(mysqli_num_rows($result)>0)
-                        {
-                            while($row=mysqli_fetch_array($result)){
-                            $status=$row["status"];
-                            $volume=$row["volume"];
-                                  if ($volume == '')
-                                  $volume = '0';
-                            $max_tat=$row["max_tat"];
-                                  if ($max_tat == '')
-                                  $max_tat = 'N/A';
-                            $avg_lag=$row["avg_lag"];
-                                  if ($avg_lag == '')
-                                  $avg_lag = 'N/A';
-                            $avg_tat=$row["avg_tat"];
-                                  if ($avg_tat == '')
-                                  $avg_tat = 'N/A';
-                            echo"
-                            <!--Populate Columns-->
-                            <tr>
-                                <td>$status</td>
-                                <td>$volume</td>
-                                <td>$max_tat</td>
-                                <td>$avg_lag</td>
-                                <td>$avg_tat</td>
-                            </tr>";
-                        }
-                        echo"
-                    </table>";
+
+                <table id="closedReportTbl" class="table table-striped table-bordered" style="width:100%">
+
+                    <!--Table Headings-->
+                    <tr>
+                        <td><strong>Status</strong></td>
+                        <td><strong>Question Volume</strong></td>
+                        <td><strong>Max. Tat (Days)</strong></td>
+                        <td><strong>Avg. Lag to Received Date (Days)</strong></td>
+                        <td><strong>Avg. Tat (Days)</strong></td>
+                    </tr>
+                    <!--Display Rows and Handle Nulls-->
+                    <?php
+                    if(mysqli_num_rows($result)>0)
+                    {
+                    while($row=mysqli_fetch_array($result)){
+                    $status=$row["status"];
+                    $volume=$row["volume"];
+                    if ($volume == '')
+                    $volume = '0';
+                    $max_tat=$row["max_tat"];
+                    if ($max_tat == '')
+                    $max_tat = 'N/A';
+                    $avg_lag=$row["avg_lag"];
+                    if ($avg_lag == '')
+                    $avg_lag = 'N/A';
+                    $avg_tat=$row["avg_tat"];
+                    if ($avg_tat == '')
+                    $avg_tat = 'N/A';
+                    echo"
+                    <!--Populate Columns-->
+                    <tr>
+                        <td>$status</td>
+                        <td>$volume</td>
+                        <td>$max_tat</td>
+                        <td>$avg_lag</td>
+                        <td>$avg_tat</td>
+                    </tr>";
                     }
-                    else
-                    {echo("No entries to display");}
-                    mysqli_close($link);
+                    echo"
+                </table>";
+                }
+                else
+                {echo("No entries to display");}
+                mysqli_close($link);
                 }
                 else
                 {
-                    echo "<h1>Enter dates</h1>";
+                echo "<h1>Enter dates</h1>";
                 }
                 ?>
             </div>
         </div>
-        
+
         <div class="panel panel-primary">
             <!-- Default panel contents -->
             <div class="panel-heading">Regional Summary</div>
@@ -273,6 +273,7 @@
                 ?>
             </div>
         </div>
+
         <div class="panel panel-primary">
             <!-- Default panel contents -->
             <div class="panel-heading">Supervisor Summary</div>
@@ -292,7 +293,6 @@
                 $result=mysqli_query($link,$sql);
                 ?>
 
-                
                 <table id="supervisorReportTbl" class="table table-striped table-bordered" style="width:100%">
                     <tr>
                         <td><strong>Supervisor</strong></td>

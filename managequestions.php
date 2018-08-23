@@ -104,6 +104,7 @@
         </div>
         <div><button class="btn btn-primary btn-lg" onclick="goBack()">Back</button></div>
     </div>
+    <?php include("includes/footer.html");?>
 </body>
 </html>
 
@@ -129,6 +130,3 @@
         window.history.back();
     }
 </script>
-
-
-<!--https://getbootstrap.com/docs/3.3/components/-->

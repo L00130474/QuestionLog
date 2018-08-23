@@ -22,7 +22,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="adminlogin.php">Log In</a></li>
                         <li class="active"><a href="managequestions.php">Manage Questions</a></li>
-                        <li><a href="displayreports.php?fromDate=1900-01-01&toDate=2099-01-01">Display Reports</a></li>
+                        <li><a href="displayreports.php">Display Reports</a></li>
                     </ul>
                 </li>
                 <li><a href="contactus.php">Contact Us</a></li>
@@ -251,8 +251,7 @@
                             </div>
                         </div>                        
                     </form>
-                </div>
-                
+                </div>                
             </div>
             <div class="col-md-3">
                 <div id="submitQ" dx-button="btnSubmit">
@@ -265,26 +264,27 @@
     </div>
 </body>
 </html>
-<script src="Scripts/bootstrap.js"></script>
+
+<!-- Styles -->
 <link href="Styles/bootstrap/bootstrap.css" rel="stylesheet" />
 <link href="Styles/bootstrap/bootstrap-theme.min.css" rel="stylesheet" />
 <link href="Styles/DatePicker/css/bootstrap-datepicker.min.css" rel="stylesheet" />
+<link href="Styles/bootstrap/datatables.bootstrap.css" rel="stylesheet" />
 
-<!--Date Time Picker-->
+<!-- Scripts -->
+<script src="Scripts/bootstrap.js"></script>
 <script src="Styles/DatePicker/js/bootstrap-datepicker.js"></script>
+<script src="Scripts/jquery.dataTables.js"></script>
+<script src="Scripts/dataTables.bootstrap.js"></script>
+
 <script>
     $('.input-daterange').datepicker({
         format: 'yyyy-mm-dd',
         todayBtn: "linked",
         clearBtn: true
     });
-</script>
 
-<script>
     function goBack() {
         window.history.back();
     }
 </script>
-
-
-<!--https://getbootstrap.com/docs/3.3/components/-->
