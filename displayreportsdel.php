@@ -39,14 +39,6 @@
             <div class="panel-heading">Open Summary. Note: Date Filters not applied</div>
             <div class="panel-body">
                 <?php
-
-                //Ensure user is logged in
-                session_start();
-                if(!isset($_SESSION['username']))
-                {
-                header("Location:adminlogin.php");
-                }
-
                 $server="localhost";
                 $dbuser="root";
                 $password="";
@@ -98,7 +90,7 @@
                 </table>";
                 }
                 else
-                {echo("<tr><td>No open claims found</td><td></td><td></td><td></td><td></td></tr></table>");}
+                {echo("No entries to display");}
                 mysqli_close($link);
                 ?>
             </div>
@@ -206,12 +198,12 @@
                 </table>";
                 }
                 else
-                {echo("<tr><td>No results for dates selected</td><td></td><td></td><td></td><td></td></tr></table>");}
+                {echo("No entries to display </table>");}
                 mysqli_close($link);
                 }
                     else
                     {
-                        echo "<h3>Please enter date span above</h3>";
+                    echo "<h1>Enter dates</h1>";
                     }
                 ?>
             </div>
@@ -278,12 +270,12 @@
                 </table>";
                 }
                 else
-                {echo("<tr><td>No results for dates selected</td><td></td><td></td><td></td><td></td></tr></table>");}
+                {echo("No entries to display </table>");}
                 mysqli_close($link);
                 }
                 else
                 {
-                echo "<h3>Please enter date span above</h3>";
+                echo "<h1>Enter dates</h1>";
                 }
                 ?>
             </div>
@@ -352,12 +344,12 @@
                 </table>";
                 }
                 else
-                {echo("<tr><td>No results for dates selected</td><td></td><td></td><td></td><td></td></tr></table>");}
+                {echo("<tr><td>No results for dates selected</td></tr></table>");}
                 mysqli_close($link);
                 }
                 else
                 {
-                echo "<h3>Please enter date span above</h3>";
+                echo "<h3>Enter dates</h3>";
                 }
                 ?>
             </div>
@@ -385,7 +377,7 @@
         $("#btnSubmitDates").click(function () {
             var fromDate = $('#fromDate').val();
             var toDate = $('#toDate').val();
-            var url = 'http://localhost/Project3/QuestionLog/displayreports.php?fromDate=' + fromDate + '&toDate=' + toDate;
+            var url = 'http://localhost/Project3/QuestionLog/displayreportsdel.php?fromDate=' + fromDate + '&toDate=' + toDate;
             window.location.href = url;
         });
     });

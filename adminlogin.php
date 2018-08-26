@@ -52,10 +52,9 @@
         }
         unset($_SESSION['errors']);
         ?>
-        <div id="form">
-            <div class="panel panel-primary">
-                <!-- Default panel contents -->
-                <div id="form">
+       
+            
+                
                     <form method="post" action="process_login.php">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
@@ -77,7 +76,7 @@
                                                                        
                                     <!-- Password -->
                                     <div class="col-md-2">
-                                        Username:
+                                        Password:
                                     </div>
                                     <div class="col-md-3">
                                         <input name="password" type="password" class="form-control" required="required" placeholder="Enter Password" />
@@ -94,9 +93,7 @@
                         </div>
                     </form>                    
                     </div>
-                </div>
-            </div>
-        </div>
+                
 </body>
 </html>
 

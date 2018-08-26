@@ -39,6 +39,7 @@ clear:both;
 #contactus{
     color:#E8C547;
 }
+
 article,
 aside,
 details,
@@ -3706,8 +3707,11 @@ tbody.collapse.in {
 .btn-group .btn-group + .btn-group {
   margin-left: -1px;
 }
+/*jc*/
 .btn-toolbar {
-  margin-left: -5px;
+  margin-left: 5px;
+  margin-bottom: 5px;
+  margin-top: 15px;
 }
 .btn-toolbar .btn,
 .btn-toolbar .btn-group,
@@ -5500,6 +5504,7 @@ button.list-group-item-danger.active:focus {
   border-bottom: 1px solid transparent;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
+  font-weight:bold;
 }
 .panel-heading > .dropdown .dropdown-toggle {
   color: inherit;

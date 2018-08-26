@@ -44,7 +44,7 @@
                             <!-- First Name -->
                             <div class="row">
                                 <div class="col-md-2">
-                                    First Name:
+                                    First Name*
                                 </div>
                                 <div class="col-md-3 input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -60,7 +60,7 @@
                             <!-- Last Name -->
                             <div class="row">
                                 <div class="col-md-2">
-                                    Last Name:
+                                    Last Name*
                                 </div>
                                 <div class="col-md-3 input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -77,7 +77,7 @@
                             <div class="row">
 
                                 <div class="col-md-2">
-                                    Email:
+                                    Email*
                                 </div>
                                 <div class="col-md-3 input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
@@ -94,7 +94,7 @@
                             <!-- Email Text -->
                             <div class="row">
                                 <div class="col-md-2">
-                                    Comment:
+                                    Comment*
                                 </div>
                                 <div class="col-md-3 input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>

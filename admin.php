@@ -35,7 +35,7 @@
     <div id="main" class="container theme-showcase" role="main">
         <div class="panel panel-primary">
             <!-- Default panel contents -->
-            <div class="panel-heading">Panel heading</div>
+            <div class="panel-heading">Select from the options below</div>
             <div class="panel-body">
                 <a class="btn btn-primary btn-lg" href="managequestions.php" role="button">Manage Questions</a>
                 <br /><br />

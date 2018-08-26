@@ -60,7 +60,7 @@
 
                                     <!-- Email Address -->
                                     <div class="col-md-2">
-                                        <strong>Address*</strong>
+                                        <strong>Email*</strong>
                                     </div>
                                     <div class="col-md-3">
                                         <input name="email" type="email" class="form-control" required="required" placeholder="Format: jbloggs@domain.ie" />

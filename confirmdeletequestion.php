@@ -37,6 +37,14 @@
             <div class="panel-heading">Confirm Delete Property</div>
             <div class="panel-body">
                 <?php
+
+                //Ensure user is logged in
+                session_start();
+                if(!isset($_SESSION['username']))
+                {
+                header("Location:adminlogin.php");
+                }
+
                 $server="localhost";
                 $dbuser="root";
                 $password="";
@@ -73,9 +81,7 @@
                         <td>$question_txt</td>
                     </tr>";
                     echo"
-                </table>";
-                mysqli_close($link);
-                ?>
+                </table>                
             </div>
         </div>
         <!-- Confirm Deletion -->
@@ -85,6 +91,9 @@
                 <br />
                 <a href='deletequestion.php?q_id=$q_id' class='btn btn-danger btn-lg'>Delete</a>
                 <a href='managequestions.php' class='btn btn-info btn-lg'>Cancel</a>
+                ";
+                mysqli_close($link);
+                ?>
         </div>
     </div>
 </body>

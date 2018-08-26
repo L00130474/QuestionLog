@@ -31,18 +31,25 @@
         </div>
     </nav>
 
-    <div id="main" class="container theme-showcase" role="main">
-        <div class="panel panel-primary">
+    <!--<div id="main" class="container theme-showcase" role="main">
+        <div class="panel panel-primary">-->
             <!-- Default panel contents -->
             <div class="panel-body">
-                <?php
+                <?php 
+                
+                //Ensure user is logged in
+                session_start();
+                if(!isset($_SESSION['username']))
+                {
+                header("Location:adminlogin.php");
+                }              
 
                 $server="localhost";
                 $dbuser="root";
                 $password="";
                 $link=mysqli_connect($server,$dbuser,$password);
                 mysqli_select_db($link, "question_log");
-                $q_id=$_GET["q_id"];
+                $q_id=$_GET['q_id'];
 
                 $sql_delete="CALL spDeleteQuestion($q_id)";
 
@@ -59,8 +66,8 @@
                 mysqli_close($link);
                 ?>
             </div>
-        </div>
-    </div>
+        <!--</div>
+    </div>-->
 
 </body>
 </html>

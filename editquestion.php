@@ -180,7 +180,7 @@
                                     Question:
                                 </div>
                                 <div class="col-md-3">
-                                    <textarea name="question" rows="8" class="form-control"> <?php echo $question ;?></textarea>
+                                    <textarea name="question" rows="8" class="form-control" disabled> <?php echo $question ;?></textarea>
                                 </div>
 
                                 <!-- Padding -->
@@ -237,6 +237,7 @@
                                 <br />
                             </div>
 
+                            <!-- Populate Status Dropdown Menu -->
                             <div class="row">
                                 <div class="col-md-2">
                                     Status:
@@ -249,17 +250,16 @@
                                     </select>
                                 </div>
                             </div>
-                        </div>                        
+                        </div>  
+                        <div class="btn-toolbar">
+                            <!-- <input type="submit" name="submit" value="Update" class="btn btn-primary btn-lg"  />-->
+                            <button type="submit" name="submit" value="Update" class="btn btn-primary btn-lg">Update</button>
+                            &nbsp;
+                            <button class="btn btn-primary btn-lg" onclick="goBack()">Back</button>
+                        </div>                      
                     </form>
                 </div>                
-            </div>
-            <div class="col-md-3">
-                <div id="submitQ" dx-button="btnSubmit">
-                    <br />
-                    <input type="submit" name="submit" value="Update" class="btn btn-primary btn-lg"  />
-                    <button class="btn btn-primary btn-lg" onclick="goBack()">Back</button>
-                </div>
-            </div>
+            </div>  
         </div>
     </div>
 </body>
