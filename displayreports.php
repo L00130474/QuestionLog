@@ -242,9 +242,9 @@
                     <tr>
                         <td><strong>Region</strong></td>
                         <td><strong>Question Volume</strong></td>
-                        <td><strong>Min. Tat (Days)</strong></td>
-                        <td><strong>Max. Tat (Days)</strong></td>
-                        <td><strong>Avg. Tat (Days)</strong></td>
+                        <td><strong>Pending</strong></td>
+                        <td><strong>Assigned</strong></td>
+                        <td><strong>Answered</strong></td>
                     </tr>
                     <?php
                     if(mysqli_num_rows($result)>0)
@@ -256,22 +256,22 @@
                     $volume=$row["volume"];
                     if ($volume == '')
                     $volume = '0';
-                    $min_tat=$row["min_tat"];
-                    if ($min_tat == '')
-                    $min_tat = 'N/A';
-                    $max_tat=$row["max_tat"];
-                    if ($max_tat == '')
-                    $max_tat = 'N/A';
-                    $avg_tat=$row["avg_tat"];
-                    if ($avg_tat == '')
-                    $avg_tat = 'N/A';
+                    $pending=$row["pending"];
+                    if ($pending == '')
+                    $pending = '0';
+                    $assigned=$row["assigned"];
+                    if ($assigned == '')
+                    $assigned = '0';
+                    $answered=$row["answered"];
+                    if ($answered == '')
+                    $answered = '0';
                     echo"
                     <tr>
                         <td>$regn_name</td>
                         <td>$volume</td>
-                        <td>$min_tat</td>
-                        <td>$max_tat</td>
-                        <td>$avg_tat</td>
+                        <td>$pending</td>
+                        <td>$assigned</td>
+                        <td>$answered</td>
                     </tr>";
                     }
                     echo"
