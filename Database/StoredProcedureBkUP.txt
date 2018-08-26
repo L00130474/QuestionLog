@@ -1,8 +1,17 @@
 DELIMITER $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spDeleteQuestion`(IN `qId` INT(11))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spClosedReport`(IN `fromDate` DATE, IN `toDate` DATE)
     NO SQL
 BEGIN
-DELETE FROM question WHERE q_id = qId;
+
+SELECT 
+	q.status, COUNT(*) AS volume, MAX(DateDiff(q.resp_date, q.q_date )) AS max_tat, ROUND(AVG(DateDiff(q.resp_date,q.clm_recvd_date)),2) AS avg_lag, ROUND(AVG(DateDiff(q.resp_date, q.q_date )),2) AS avg_tat 
+FROM 
+	question AS q
+WHERE 
+	q.q_date >= fromDate and q.q_date <= toDate AND
+    q.status = 'Answered'
+    GROUP by q.status;
+
 END$$
 DELIMITER ;
 
@@ -14,11 +23,18 @@ END$$
 DELIMITER ;
 
 DELIMITER $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spDisplayApprovedQs`()
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spEditQuestion`(IN `responseIn` TEXT, IN `responseDate` DATE, IN `statusIn` VARCHAR(30), IN `questID` INT(11), IN `smeName` VARCHAR(80), IN `cat_name` VARCHAR(40))
+    NO SQL
 BEGIN
-      SELECT q.*, concat(s.sme_fname, ' ', s.sme_lname) as sme_name FROM question as q
-      JOIN sme as s on q.sme_id = s.sme_id
-      WHERE STATUS != 'pending';
+
+UPDATE `question` SET response = responseIn, resp_date = responseDate, status = statusIn WHERE q_id = questID;
+
+UPDATE `question` AS q JOIN sme AS s 
+SET q.sme_id=s.sme_id WHERE q_id = questID AND concat(s.sme_fname, ' ', s.sme_lname) = smeName;
+
+UPDATE `question` AS q JOIN category AS c
+SET q.cat_id = c.cat_id WHERE q_id = questID AND c.cat_name = cat_name;
+
 END$$
 DELIMITER ;
 
@@ -31,31 +47,118 @@ BEGIN
       LEFT JOIN sme AS s 
       on q.sme_id = s.sme_id
       LEFT JOIN category AS c
-      ON q.cat_id = c.cat_id;      
+      ON q.cat_id = c.cat_id
+      ORDER BY q.status desc, q.q_date DESC;      
 END$$
 DELIMITER ;
 
 DELIMITER $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spEditQuestion1`(IN `exam_name` VARCHAR(40), IN `emailAdd` VARCHAR(40), IN `claimNum` INT(11), IN `recvdDate` DATE, IN `questionIn` TEXT, IN `catIn` INT(11), IN `responseIn` TEXT, IN `responseDate` DATE, IN `smeIn` INT(11), IN `statusIn` VARCHAR(30), IN `questID` INT(11), IN `smeName` VARCHAR(80), IN `cat_name` VARCHAR(40))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spDeleteQuestion`(IN `qId` INT(11))
+    NO SQL
+BEGIN
+DELETE FROM question WHERE q_id = qId;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spDisplayApprovedQs`()
+BEGIN
+      SELECT q.*, concat(s.sme_fname, ' ', s.sme_lname) as sme_name FROM question as q
+      JOIN sme as s on q.sme_id = s.sme_id
+      WHERE STATUS != 'pending'
+      ORDER BY q.q_date DESC;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spOpenReport`()
     NO SQL
 BEGIN
 
-UPDATE `question` SET examiner_name = exam_name, email = emailAdd, claim_no = claimNum, clm_recvd_date = recvdDate, question_txt = questionIn, cat_id = catIn, response = responseIn, resp_date = responseDate, sme_id = smeIn, status = statusIn WHERE q_id = questID;
-
-UPDATE `question` AS q JOIN sme AS s 
-SET q.sme_id=s.sme_id WHERE q_id = questID AND concat(s.sme_fname, ' ', s.sme_lname) = smeName;
-
-UPDATE `question` AS q JOIN category AS c
-SET q.cat_id = c.cat_id WHERE q_id = questID AND c.cat_name = cat_name;
+SELECT 
+	q.status, COUNT(*) AS volume, MAX(DateDiff(NOW(), q.clm_recvd_date)) AS max_lag, ROUND(AVG(DateDiff(NOW(),q.clm_recvd_date)),2) AS avg_lag, ROUND(AVG(DateDiff(NOW(), q.q_date )),2) AS avg_tat 
+FROM 
+	question AS q
+WHERE 
+	q.status <> 'Answered'
+    GROUP by q.status;
 
 END$$
 DELIMITER ;
 
 DELIMITER $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spEditQuestion`(IN `exam_name` VARCHAR(40), IN `emailAdd` VARCHAR(40), IN `claimNum` INT(11), IN `recvdDate` DATE, IN `questionIn` TEXT, IN `catIn` INT(11), IN `responseIn` TEXT, IN `responseDate` DATE, IN `smeIn` INT(11), IN `statusIn` VARCHAR(30), IN `questID` INT(11))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spQuestionDetails`(IN `qId` INT(11))
+    NO SQL
+SELECT q.*,concat(sme_fname, ' ', sme_lname) as sme_name, cat_name FROM `question` as q 
+LEFT JOIN `sme` AS s ON q.sme_id = s.sme_id
+LEFT JOIN `category` AS c ON q.cat_id = c.cat_id
+WHERE q_id = qId$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spRegionalReport`(IN `fromDate` DATE, IN `toDate` DATE)
     NO SQL
 BEGIN
-UPDATE question set examiner_name = exam_name, email = emailAdd, claim_no = claimNum, clm_recvd_date = recvdDate, question_txt = questionIn, cat_id = catIn, response = responseIn, resp_date = responseDate, sme_id = smeIn, status = statusIn WHERE q_id = questID;
+
+SELECT
+	r.`regn_name`, COUNT(*) AS volume,
+COUNT(
+    	CASE
+    		WHEN q.`status` = 'Pending'
+    		THEN 1
+    		ELSE NULL
+    	END
+     ) AS 'pending',
+COUNT(
+    	CASE
+    		WHEN q.`status` = 'Assigned'
+    		THEN 1
+    		ELSE NULL
+    	END
+     ) AS 'assigned',
+COUNT(
+    	CASE
+    		WHEN q.`status` = 'Answered'
+    		THEN 1
+    		ELSE NULL
+    	END
+     ) AS 'answered'
+FROM 
+	question AS q 
+LEFT JOIN sme AS s 
+	ON q.`sme_id` = s.`sme_id`
+LEFT JOIN supervisor AS su
+    ON s.`sup_id` = su.`sup_id`
+LEFT JOIN region as r
+	on su.`region_id` = r.`region_id`
+WHERE
+	q.`q_date` >= fromDate and q.`q_date` <= toDate
+GROUP BY r.`regn_name`
+ORDER BY volume DESC;
+
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spRegionalReportDEL`(IN `fromDate` DATE, IN `toDate` DATE)
+    NO SQL
+BEGIN
+
+SELECT 
+	r.regn_name, COUNT(*) AS volume, MIN(DateDiff(q.resp_date, q.q_date )) AS min_tat, MAX(DateDiff(q.resp_date, q.q_date )) AS max_tat, ROUND(AVG(DateDiff(q.resp_date, q.q_date )),2) AS avg_tat 
+FROM 
+	question AS q 
+LEFT JOIN sme AS s 
+	ON q.sme_id = s.sme_id
+LEFT JOIN supervisor AS su
+    ON s.sup_id = su.sup_id
+LEFT JOIN region as r
+	on su.region_id = r.region_id    
+WHERE 
+	q.q_date >= fromDate and q.q_date <= toDate
+GROUP BY r.regn_name
+ORDER BY volume DESC, avg_tat DESC;
+
 END$$
 DELIMITER ;
 
@@ -73,17 +176,22 @@ BEGIN
 DELIMITER ;
 
 DELIMITER $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spEditQuestion1`(IN `exam_name` VARCHAR(40), IN `emailAdd` VARCHAR(40), IN `claimNum` INT(11), IN `recvdDate` DATE, IN `questionIn` TEXT, IN `catIn` INT(11), IN `responseIn` TEXT, IN `responseDate` DATE, IN `smeIn` INT(11), IN `statusIn` VARCHAR(30), IN `questID` INT(11), IN `smeName` VARCHAR(80), IN `cat_name` VARCHAR(40))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spSupervisorReport`(IN `fromDate` DATE, IN `toDate` DATE)
     NO SQL
 BEGIN
 
-UPDATE `question` SET examiner_name = exam_name, email = emailAdd, claim_no = claimNum, clm_recvd_date = recvdDate, question_txt = questionIn, cat_id = catIn, response = responseIn, resp_date = responseDate, sme_id = smeIn, status = statusIn WHERE q_id = questID;
-
-UPDATE `question` AS q JOIN sme AS s 
-SET q.sme_id=s.sme_id WHERE q_id = questID AND concat(s.sme_fname, ' ', s.sme_lname) = smeName;
-
-UPDATE `question` AS q JOIN category AS c
-SET q.cat_id = c.cat_id WHERE q_id = questID AND c.cat_name = cat_name;
+SELECT 
+	concat(su.sup_lname,', ',su.sup_fname, ' ',su.m_initial) AS sup_name, COUNT(*) AS volume, MIN(DateDiff(q.resp_date, q.q_date )) AS min_tat, MAX(DateDiff(q.resp_date, q.q_date )) AS max_tat, ROUND(AVG(DateDiff(q.resp_date, q.q_date )),2) AS avg_tat 
+FROM 
+	question AS q 
+LEFT JOIN sme AS s 
+	ON q.sme_id = s.sme_id
+LEFT JOIN supervisor AS su
+    ON s.sup_id = su.sup_id
+WHERE 
+	q.q_date >= fromDate and q.q_date <= toDate
+GROUP BY concat(su.sup_lname,', ',su.sup_fname, ' ',su.m_initial)
+ORDER BY volume DESC, avg_tat DESC;
 
 END$$
 DELIMITER ;
