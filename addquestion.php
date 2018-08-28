@@ -31,8 +31,6 @@
         </div>
     </nav>
 
-    <!--<?php include("includes/nav.html");?>-->
-
     <div id="container">
         
         <div id="main" class="container theme-showcase" role="main">

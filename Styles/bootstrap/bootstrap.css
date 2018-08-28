@@ -11,11 +11,12 @@ html {
 }
 body {
   margin: 0;  
-  height:100%;  
+  min-height:100%;  
 }
+
+
 /*jc in addquestions.php*/
 #main{
-    min-height:100%;
     padding-bottom:50px;
     overflow:auto;
 }
@@ -23,11 +24,13 @@ body {
 #footer{
 background-color:#30323D; 
 color:#E1ECF1;
-height:40px;
-padding-top:10px;
-margin-top:-40px;
-position:relative;
+height:50px;
+padding-top:15px;
+/*margin-top:-40px;*/
+position:fixed;
+bottom:0;
 clear:both;
+width: 100%;
 }
 /*jc*/
 #copyright{
@@ -37,7 +40,7 @@ clear:both;
 }
 /*jc*/
 #contactus{
-    color:#E8C547;
+    
 }
 
 article,
@@ -1125,13 +1128,15 @@ textarea {
   line-height: inherit;
 }
 a {
-  color: #337ab7;
+  color: #E8C547;
+  font-weight:bold;
   text-decoration: none;
 }
 a:hover,
 a:focus {
-  color: #23527c;
-  text-decoration: underline;
+  color: #E1ECF1;
+  font-weight:bold;
+  text-decoration: none;
 }
 a:focus {
   outline: thin dotted;
@@ -4025,11 +4030,12 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   position: relative;
   display: block;
   padding: 10px 15px;
+  font-weight:normal; /*jc*/
 }
 .nav > li > a:hover,
 .nav > li > a:focus {
   text-decoration: none;
-  background-color: #eee;
+  background-color: #eee;   
 }
 .nav > li.disabled > a {
   color: #777;
@@ -4524,6 +4530,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 @media (min-width: 768px) {
   .navbar-left {
     float: left !important;
+    padding-top:14px;
+    padding-right:10px;
   }
   .navbar-right {
     float: right !important;

@@ -11,7 +11,7 @@
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="default.php">Optum Question Log</a>
+                <a class="navbar-left" href="default.php"><img src="images/question_gold.png" width="20" height="20"> WE Question Log </a>
             </div>
             <ul class="nav navbar-nav">
                 <li class="active"><a href="default.php">Home</a></li>
@@ -39,7 +39,7 @@
         <!--Jumbotron-->
         <div class="jumbotron">
             <h1>Online Question Log</h1>
-            <p>Browse questions by entering key word(s) in the search box below or submit a new question.</p>
+            <p>Browse questions by entering key word(s) in the search box below or submit a new question.<i class="glyphicon glyphicon-question-sign"></i></p>
             <p><a class="btn btn-primary btn-lg" href="addquestion.php" role="button">Submit Question</a></p>
         </div>
 
