@@ -116,6 +116,7 @@
             </div>
         </div>
     </div>
+    <!--Add Footer-->
     <?php include("includes/footer.html");?>
 </body>
 </html>

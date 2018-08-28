@@ -15,32 +15,25 @@ body {
 }
 
 
-/*jc in addquestions.php*/
-#main{
-    padding-bottom:50px;
-    overflow:auto;
-}
 /*jc*/
 #footer{
-background-color:#30323D; 
-color:#E1ECF1;
-height:50px;
-padding-top:15px;
-/*margin-top:-40px;*/
-position:fixed;
-bottom:0;
-clear:both;
-width: 100%;
+    background-color: #30323D; 
+    color: #E1ECF1;
+    /*height of footer*/
+    height: 45px;
+    /*centre text vertically*/
+    padding-top: 15px;
+    /*fix to bottom of browser*/
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 /*jc*/
 #copyright{
-    width:70%;
-    float:left;
-    padding-left:20px;
-}
-/*jc*/
-#contactus{
-    
+    width: 75%;
+    /*prevent from displaying above contactus div*/
+    float: left;
+    padding-left: 20px;
 }
 
 article,
