@@ -34,6 +34,13 @@
     <div id="container">
         
         <div id="main" class="container theme-showcase" role="main">
+
+            <!--Jumbotron-->
+            <div class="jumbotron">
+                <h1>Submit Question</h1>
+                <p>Please fill in ALL fields below. &nbsp;&nbsp; <i class="glyphicon glyphicon-hand-down"></i></p>
+            </div>
+
             <div>
                 <!-- Default panel contents -->
                 <div id="form">
