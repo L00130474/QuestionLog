@@ -92,7 +92,7 @@
 
                                     <!-- Received Date -->
                                     <div class="col-md-2">
-                                        <strong>Received Date*</strong>
+                                        <strong>Claim Received Date*</strong>
                                     </div>
 
                                     <div class="col-md-3">
