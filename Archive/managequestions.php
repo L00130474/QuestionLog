@@ -14,7 +14,7 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="Default.html">Home</a></li>               
                 <li><a href="admin.html">SME Log In</a></li>
-                <li><a href="about.html">About</a></li>                
+                                
             </ul>
         </div>
     </nav>     

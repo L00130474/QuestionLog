@@ -17,7 +17,7 @@
                 <li class="active"><a href="default.php">Home</a></li>
                 <li><a href="addquestion.php">Submit Question</a></li>
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="adminlogin.php">
+                    <a class="dropdown-toggle" data-toggle="dropdown">
                         SME Area
                         <span class="caret"></span>
                     </a>
@@ -28,7 +28,7 @@
                     </ul>
                 </li>
                 <li><a href="contactus.php">Contact Us</a></li>
-                <li><a href="about.html">About</a></li>
+                
             </ul>
         </div>
     </nav> 
