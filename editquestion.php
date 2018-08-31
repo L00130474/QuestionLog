@@ -88,7 +88,7 @@
 
                             <div class="row">
                                 <div class="col-md-2">
-                                    Examiner Name:
+                                    <strong>Examiner Name</strong>
                                 </div>
                                 <div class="col-md-3">
                                     <input name="examiner_name" type="text" class="form-control" value="<?php echo $examiner_name ;?>" disabled />
@@ -99,7 +99,7 @@
                                 </div>
 
                                 <div class="col-md-2">
-                                    Email Address:
+                                    <strong>Email Address</strong>
                                 </div>
                                 <div class="col-md-3">
                                     <input name="email" type="email" class="form-control" value="<?php echo $email ;?>" disabled/>
@@ -113,7 +113,7 @@
 
                             <div class="row">
                                 <div class="col-md-2">
-                                    Claim Number:
+                                    <strong>Claim Number</strong>
                                 </div>
                                 <div class="col-md-3">
                                     <input name="claim_no" type="text" class="form-control" value="<?php echo $claim_no ;?>" disabled/>
@@ -124,7 +124,7 @@
                                 </div>
 
                                 <div class="col-md-2">
-                                    Received Date:
+                                    <strong>Received Date</strong>
                                 </div>
                                 <div class="col-md-3">
                                     <input name="clm_recvd_date" type="text" class="form-control" value="<?php echo $clm_recvd_date ;?>" disabled/>
@@ -138,7 +138,7 @@
 
                             <div class="row">
                                 <div class="col-md-2">
-                                    Question Date:
+                                    <strong>Question Date</strong>
                                 </div>
                                 <div class="col-md-3">
                                     <input name="q_date" type="text" class="form-control" value="<?php echo $q_date ;?>" disabled />
@@ -149,7 +149,7 @@
                                 </div>
 
                                 <div class="col-md-2">
-                                    Category:
+                                    <strong>Category</strong>
                                 </div>
                                 <div class="col-md-3">
 
@@ -175,7 +175,7 @@
 
                             <div class="row">
                                 <div class="col-md-2">
-                                    Question:
+                                    <strong>Question</strong>
                                 </div>
                                 <div class="col-md-3">
                                     <textarea name="question" rows="8" class="form-control" disabled> <?php echo $question ;?></textarea>
@@ -186,7 +186,7 @@
                                 </div>
 
                                 <div class="col-md-2">
-                                    Response:
+                                    <strong>Response</strong>
                                 </div>
                                 <div class="col-md-3">
                                     <textarea name="response" rows="8" class="form-control"> <?php echo $response ;?></textarea>
@@ -200,18 +200,21 @@
 
                             <div class="row">
                                 <div class="col-md-2">
-                                    Response Date:
+                                    <strong>Response Date</strong>
                                 </div>
                                 <div class="col-md-3">
                                     <input name="resp_date" type="text" class="form-control" value="<?php echo $resp_date ;?>" />
-                                </div>
+                                    <div class="input-daterange input-group" id="datepicker" data-provide="datepicker">
+                                        <span class="input-group-addon"><strong>Date</strong></span>
+                                        <input id="recdDate" type="text" required="required" class="input-sm form-control" name="clm_recvd_date" />
+                                    </div>
 
                                 <!-- Padding -->
                                 <div class="col-md-1">
                                 </div>
 
                                 <div class="col-md-2">
-                                    SME:
+                                    <strong>SME</strong>
                                 </div>
                                 <div class="col-md-3">
                                     <select name="sme_name" class="form-control">
@@ -238,7 +241,7 @@
                             <!-- Populate Status Dropdown Menu -->
                             <div class="row">
                                 <div class="col-md-2">
-                                    Status:
+                                   <strong>Status</strong>
                                 </div>
                                 <div class="col-md-3">
                                     <select name="status" class="form-control">

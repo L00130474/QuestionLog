@@ -132,14 +132,14 @@
                     <!-- Update Dates -->
                     <div class="col-md-3">
                         <div id="submitQ" dx-button="btnSubmit">
-                            <input type="submit" name="submit" id="btnSubmitDates" class="btn btn-primary btn-sm" value="Generate Reports" />
+                            <input type="submit" name="submit" id="btnSubmitDates" class="btn btn-danger btn-sm" value="Generate Reports" />
                         </div>
                     </div>
                 </div>
             </div>
         </div>        
 
-        <div class="panel panel-success">
+        <div class="panel panel-primary">
             <!-- Default panel contents -->
             <div class="panel-heading">Closed Summary</div>
             <div class="panel-body">
@@ -215,7 +215,7 @@
                 ?>
             </div>
         </div>
-        <div class="panel panel-info">
+        <div class="panel panel-primary">
             <!-- Default panel contents -->
             <div class="panel-heading">Regional Summary</div>
             <div class="panel-body">
@@ -288,7 +288,7 @@
             </div>
         </div>
 
-        <div class="panel panel-warning">
+        <div class="panel panel-primary">
             <!-- Default panel contents -->
             <div class="panel-heading">Supervisor Summary</div>
             <div class="panel-body">
