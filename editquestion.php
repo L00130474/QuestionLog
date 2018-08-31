@@ -203,11 +203,11 @@
                                     <strong>Response Date</strong>
                                 </div>
                                 <div class="col-md-3">
-                                    <input name="resp_date" type="text" class="form-control" value="<?php echo $resp_date ;?>" />
                                     <div class="input-daterange input-group" id="datepicker" data-provide="datepicker">
-                                        <span class="input-group-addon"><strong>Date</strong></span>
-                                        <input id="recdDate" type="text" required="required" class="input-sm form-control" name="clm_recvd_date" />
-                                    </div>
+                                            <span class="input-group-addon"><strong>Date</strong></span>
+                                        <input id="resp_date" type="text" class="form-control" name="resp_date" value="<?php echo $resp_date ;?>" />
+                                        </div>                                           
+                                </div>
 
                                 <!-- Padding -->
                                 <div class="col-md-1">
