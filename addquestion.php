@@ -26,8 +26,7 @@
                         <li><a href="displayreports.php">Display Reports</a></li>
                     </ul>
                 </li>
-                <li><a href="contactus.php">Contact Us</a></li>
-                
+                <li><a href="contactus.php">Contact Us</a></li>                
             </ul>
         </div>
     </nav> 
