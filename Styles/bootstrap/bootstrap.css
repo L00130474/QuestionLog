@@ -72,6 +72,7 @@ a {
 a:active,
 a:hover {
   outline: 0;
+
 }
 abbr[title] {
   border-bottom: 1px dotted;
@@ -698,6 +699,7 @@ th {
 }
 .glyphicon-hand-down:before {
   content: "\e130";
+  color: #c3423d;
 }
 .glyphicon-circle-arrow-right:before {
   content: "\e131";
@@ -1122,19 +1124,20 @@ textarea {
 }
 a {
   color: #E8C547;
-  font-weight:bold;
+  font-weight:normal;
   text-decoration: none;
 }
 a:hover,
 a:focus {
-  color: #E1ECF1;
-  font-weight:bold;
+  color: #E1ECF1;  
   text-decoration: none;
+  font-weight:normal;
 }
 a:focus {
   outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
+  font-weight:normal;
 }
 figure {
   margin: 0;
@@ -5514,6 +5517,7 @@ button.list-group-item-danger.active:focus {
   margin-top: 0;
   margin-bottom: 0;
   font-size: 16px;
+  font-weight:bold;
   color: inherit;
 }
 .panel-title > a,
@@ -5819,7 +5823,8 @@ button.list-group-item-danger.active:focus {
   border-color: #ebccd1;
 }
 .panel-danger > .panel-heading {
-  color: #a94442;
+  color: #30323D;
+  /*font-weight:bold;*/
   background-color: #f2dede;
   border-color: #ebccd1;
 }

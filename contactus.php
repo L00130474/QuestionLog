@@ -9,13 +9,13 @@
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="default.php">Optum Question Log</a>
+                <a class="navbar-left" href="default.php"><img src="images/question_gold.png" width="20" height="20"> WE Question Log </a>
             </div>
             <ul class="nav navbar-nav">
                 <li><a href="default.php">Home</a></li>
                 <li><a href="addquestion.php">Submit Question</a></li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="adminlogin.php">
+                <li>
+                    <a class="dropdown-toggle" data-toggle="dropdown">
                         SME Area
                         <span class="caret"></span>
                     </a>
@@ -25,11 +25,10 @@
                         <li><a href="displayreports.php">Display Reports</a></li>
                     </ul>
                 </li>
-                <li class="active"><a href="contactus.php">Contact Us</a></li>
-                <li><a href="about.html">About</a></li>
+                <li class="active"><a href="contactus.php">Contact Us</a></li>                
             </ul>
         </div>
-    </nav>
+    </nav> 
 
     <div id="main" class="container theme-showcase" role="main">
 
@@ -111,7 +110,8 @@
         </div>
 
     </div>
-
+    <!--Include Footer-->
+    <?php include("includes/footer.html");?>  
 </body>
 </html>
 <!-- Styles -->

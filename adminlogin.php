@@ -9,27 +9,26 @@
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="default.php">Optum Question Log</a>
+                <a class="navbar-left" href="default.php"><img src="images/question_gold.png" width="20" height="20"> WE Question Log </a>
             </div>
             <ul class="nav navbar-nav">
                 <li><a href="default.php">Home</a></li>
                 <li><a href="addquestion.php">Submit Question</a></li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="adminlogin.php">
+                <li class="active">
+                    <a class="dropdown-toggle" data-toggle="dropdown">
                         SME Area
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="adminlogin.php">Log In</a></li>
+                        <li class="active"><a href="adminlogin.php">Log In</a></li>
                         <li><a href="managequestions.php">Manage Questions</a></li>
                         <li><a href="displayreports.php">Display Reports</a></li>
                     </ul>
                 </li>
                 <li><a href="contactus.php">Contact Us</a></li>
-                <li><a href="about.html">About</a></li>
             </ul>
         </div>
-    </nav>
+    </nav> 
 
     <div id="main" class="container theme-showcase" role="main">
         <?php
@@ -51,10 +50,7 @@
         </div>";
         }
         unset($_SESSION['errors']);
-        ?>
-       
-            
-                
+        ?>  
                     <form method="post" action="process_login.php">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
@@ -64,7 +60,7 @@
                                 <div class="row">
                                     <!-- Username -->
                                     <div class="col-md-2">
-                                        Username:
+                                        <strong>Username*</strong>
                                     </div>
                                     <div class="col-md-3">
                                         <input name="username" type="text" class="form-control" required="required" placeholder="Enter Username" />
@@ -76,7 +72,7 @@
                                                                        
                                     <!-- Password -->
                                     <div class="col-md-2">
-                                        Password:
+                                        <strong>Password*</strong>
                                     </div>
                                     <div class="col-md-3">
                                         <input name="password" type="password" class="form-control" required="required" placeholder="Enter Password" />
@@ -84,15 +80,15 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3">
-                            <div id="submitQ" dx-button="btnSubmit">
-                                <br />
-                                <input type="submit" name="submit" value="Submit" class="btn btn-primary btn-lg" />
-                                <button class="btn btn-primary btn-lg" onclick="goBack()">Back</button>
-                            </div>
-                        </div>
+                        
+                        <div class="btn-toolbar">
+                            <button type="submit" name="submit" value="Update" class="btn btn-primary btn-lg">Submit</button>
+                            &nbsp;
+                            <button class="btn btn-primary btn-lg" onclick="goBack()">Back</button>
+                        </div>  
                     </form>                    
                     </div>
+    <!--Include Footer-->
     <?php include("includes/footer.html");?>      
 </body>
 </html>

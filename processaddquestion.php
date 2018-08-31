@@ -53,7 +53,7 @@
                 if(mysqli_query($link, $sql_insert)) 
                 {
                     echo "<h3>Question succesfully submitted for review.</h3>";
-                    echo "<a href='addquestion.php'> Return to add a question page</a>";}
+                    echo "<a href='addquestion.php' class='btn btn-info btn-lg'> Return to add a question page</a>";}
                     else {
                     echo "Error, please contact system adminstrator";
                 }
