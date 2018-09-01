@@ -117,7 +117,7 @@
         </div>
     </div>
     <!--Add Footer-->
-    <?php include("includes/footer.html");?>
+    <?php include("includes/footerlong.html");?>
 </body>
 </html>
 

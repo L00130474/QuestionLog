@@ -29,6 +29,16 @@ body {
     width: 100%;
 }
 /*jc*/
+#footerlong{
+    background-color: #30323D; 
+    color: #E1ECF1;
+    /*height of footer*/
+    height: 45px;
+    /*centre text vertically*/
+    padding-top: 15px;    
+    width: 100%;
+}
+/*jc*/
 #copyright{
     width: 75%;
     /*prevent from displaying above contactus div*/

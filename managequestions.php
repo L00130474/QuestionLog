@@ -103,7 +103,7 @@
         </div>
         <div><button class="btn btn-primary btn-lg" onclick="goBack()">Back</button></div>
     </div>
-    <?php include("includes/footer.html");?>
+    <?php include("includes/footerlong.html");?>
 </body>
 </html>
 
