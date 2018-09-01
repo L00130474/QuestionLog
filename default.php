@@ -10,9 +10,11 @@
     <!--Menu-->
     <nav class="navbar navbar-default">
         <div class="container-fluid">
-            <div class="navbar-header">
+            <!--Company Name-->
+            <div class="navbar-header">                
                 <a class="navbar-left" href="default.php"><img src="images/question_gold.png" width="20" height="20"> WE Question Log </a>
             </div>
+            <!--Menu Options-->
             <ul class="nav navbar-nav">
                 <li class="active"><a href="default.php">Home</a></li>
                 <li><a href="addquestion.php">Submit Question</a></li>
@@ -27,8 +29,7 @@
                         <li><a href="displayreports.php">Display Reports</a></li>
                     </ul>
                 </li>
-                <li><a href="contactus.php">Contact Us</a></li>
-                
+                <li><a href="contactus.php">Contact Us</a></li>                
             </ul>
         </div>
     </nav> 
@@ -39,7 +40,7 @@
         <!--Jumbotron-->
         <div class="jumbotron">
             <h1>Online Question Log</h1>
-            <p>Browse questions by entering key word(s) in the search box below or submit a new question.<i class="glyphicon glyphicon-question-sign"></i></p>
+            <p>Browse questions by entering key word(s) in the search box below or submit a new question.</p>
             <p><a class="btn btn-primary btn-lg" href="addquestion.php" role="button">Submit Question</a></p>
         </div>
 

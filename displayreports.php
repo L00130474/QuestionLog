@@ -363,7 +363,7 @@
         </div>        
     </div>
     <!--Include Footer-->
-    <?php include("includes/footer.html");?>  
+    <?php include("includes/footerlong.html");?>  
 </body>
 </html>
 <!-- Styles -->
